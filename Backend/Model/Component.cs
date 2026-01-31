@@ -1,10 +1,10 @@
 public class Component
 {
-public Guid Id { get; set; }
-public string Name { get; set; }
-public string Description { get; set; }
-public int Quantity { get; set; }
+    public int Id { get; set; }
 
+    public string Name { get; set; } = string.Empty;
 
-// public ICollection<BoardComponent> BoardComponents { get; set; }
+    public string Description { get; set; } = string.Empty;
+    
+    public List<BoardComponent> BoardComponents { get; set; } = new List<BoardComponent>();
 }
