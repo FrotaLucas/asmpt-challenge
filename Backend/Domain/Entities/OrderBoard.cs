@@ -1,12 +1,15 @@
-public class OrderBoard
+namespace Backend.Domain.Entities
 {
-    public int OrderId { get; set; }
+    public class OrderBoard
+    {
+        public int OrderId { get; set; }
 
-    public Order Order { get; set; } = default!;
+        public Order Order { get; set; } = default!;
 
-    public int BoardId { get; set; }
+        public int BoardId { get; set; }
 
-    public Board Board { get; set; } = default!;
+        public Board Board { get; set; } = default!;
 
-    public int Quantity { get; set; }
+        public int Quantity { get; set; }
+    }
 }

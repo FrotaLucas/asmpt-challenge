@@ -1,10 +1,16 @@
-public class ComponentService : IComponentService
-{
-    private readonly DataContext _context;
+using Backend.Infrastructure.Data;
 
-    public ComponentService(DataContext context)
+namespace Backend.Domain.Services.Component 
+{
+    public class ComponentService : IComponentService
     {
-        _context = context;
+        private readonly DataContext _context;
+
+        public ComponentService(DataContext context)
+        {
+            _context = context;
+        }
+
     }
 
-}   
+}

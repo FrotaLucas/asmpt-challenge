@@ -1,12 +1,15 @@
-public class BoardComponent
+namespace Backend.Domain.Entities
 {
-    public int BoardId { get; set; }
+    public class BoardComponent
+    {
+        public int BoardId { get; set; }
 
-    public Board Board { get; set; } = default!;
+        public Board Board { get; set; } = default!;
 
-    public int ComponentId { get; set; }
+        public int ComponentId { get; set; }
 
-    public Component Component { get; set; } = default!;
+        public Component Component { get; set; } = default!;
 
-    public int Quantity { get; set; }
+        public int Quantity { get; set; }
+    }
 }

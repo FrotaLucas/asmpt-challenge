@@ -1,10 +1,14 @@
-public class Component
+namespace Backend.Domain.Entities
 {
-    public int Id { get; set; }
+    public class Component
+    {
+        public int Id { get; set; }
 
-    public string Name { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
 
-    public string Description { get; set; } = string.Empty;
-    
-    public List<BoardComponent> BoardComponents { get; set; } = new List<BoardComponent>();
+        public string Description { get; set; } = string.Empty;
+
+        public List<BoardComponent> BoardComponents { get; set; } = new List<BoardComponent>();
+    }
+
 }

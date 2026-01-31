@@ -1,3 +1,7 @@
-public interface IBoardService
+namespace Backend.Domain.Services.Board
 {
+    public interface IBoardService
+    {
+    }
+
 }
