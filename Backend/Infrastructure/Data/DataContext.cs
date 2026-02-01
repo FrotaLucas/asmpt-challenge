@@ -16,7 +16,7 @@ namespace Backend.Infrastructure.Data
         
             modelBuilder.Entity<Component>()
                 .HasData(
-                    new Component { Id = 1,  Name = "Resistor", Description = "Resistor 0402" }
+                    new Component { Id = 1, Code = "R01", Name = "Resistor", Description = "Resistor 0402" }
                 );
         
         }
