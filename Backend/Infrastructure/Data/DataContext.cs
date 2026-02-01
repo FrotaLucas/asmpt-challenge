@@ -13,6 +13,12 @@ namespace Backend.Infrastructure.Data
         {
             modelBuilder.Entity<OrderBoard>().HasKey(orderBoard => new { orderBoard.OrderId, orderBoard.BoardId });
             modelBuilder.Entity<BoardComponent>().HasKey(borderComponent => new { borderComponent.BoardId, borderComponent.ComponentId });
+        
+            modelBuilder.Entity<Component>()
+                .HasData(
+                    new Component { Id = 1,  Name = "Resistor", Description = "Resistor 0402" }
+                );
+        
         }
 
         public DbSet<Order> Orders { get; set; }
