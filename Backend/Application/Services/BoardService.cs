@@ -122,6 +122,9 @@ namespace Backend.Application.Services
 
             existingBoard.Name = board.Name;
             existingBoard.Description = board.Description;
+            existingBoard.Code = board.Code;
+            existingBoard.Length = board.Length;
+            existingBoard.Width = board.Width;
 
             _context.Boards.Update(existingBoard);
             await _context.SaveChangesAsync();
