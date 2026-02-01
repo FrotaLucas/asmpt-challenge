@@ -2,7 +2,7 @@
 
 ❗ Um Board não pode ter dimensões negativas
 
-❗ Um Component precisa ter quantidade ≥ 1
+❗ Um Component precisa ter quantidade ≥ 1 ???
 
 ❗ Um Order só pode ser fechado após o download para a linha
 
