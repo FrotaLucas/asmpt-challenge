@@ -4,7 +4,16 @@ namespace Backend.Domain.Services.BoardService
 {
     public interface IBoardService
     {
-        public Task<Board> CreateBoardAsync(Board board);
+        Task<List<Board>> GetAllBoardsAsync();
+
+        Task<Board> GetBoardByIdAsync(int id);
+
+        Task<Board> CreateBoardAsync(Board board);
+
+        Task<bool> DeleteBoardAsync(int id);
+
+        Task<Board> UpdateBoardAsync(Board board);
+
     }
 
 }
