@@ -1,3 +1,5 @@
+using Backend.Application.Services;
+using Backend.Domain.Interfaces;
 using Backend.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
@@ -17,6 +19,8 @@ builder.Services.AddDbContext<DataContext>( options =>
 );
 
 builder.Services.AddOpenApi();
+builder.Services.AddControllers();
+builder.Services.AddScoped<IBoardService, BoardService>();
 
 var app = builder.Build();
 
