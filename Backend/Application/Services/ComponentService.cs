@@ -1,6 +1,7 @@
 using Backend.Infrastructure.Data;
+using Backend.Domain.Interfaces;
 
-namespace Backend.Domain.Services.ComponentService
+namespace Backend.Application.Services
 {
     public class ComponentService : IComponentService
     {

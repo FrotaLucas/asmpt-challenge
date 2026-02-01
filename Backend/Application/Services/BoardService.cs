@@ -1,11 +1,17 @@
 using Backend.Infrastructure.Data;
 using Backend.Domain.Entities;
+using Backend.Domain.Interfaces;
 
-namespace Backend.Domain.Services.BoardService
+namespace Backend.Application.Services
 {
     public class BoardService : IBoardService
     {
         private readonly DataContext _context;
+
+        //private readonly ILogger<BoardService> _logger;
+
+        //LogError
+        //_logger.LogError(ex, "Error fetching boards");
 
         public BoardService(DataContext context)
         {

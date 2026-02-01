@@ -1,4 +1,4 @@
-namespace Backend.Domain.Services.ComponentService
+namespace Backend.Domain.Interfaces
 {
     public interface IComponentService
     {

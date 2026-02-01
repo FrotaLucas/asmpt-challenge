@@ -1,6 +1,6 @@
 using Backend.Domain.Entities;
 
-namespace Backend.Domain.Services.BoardService
+namespace Backend.Domain.Interfaces
 {
     public interface IBoardService
     {

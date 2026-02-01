@@ -1,4 +1,4 @@
-namespace Backend.Domain.Services.OrderService
+namespace Backend.Domain.Interfaces
 {
     public interface IOrderService
     {

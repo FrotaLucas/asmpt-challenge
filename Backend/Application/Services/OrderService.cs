@@ -1,6 +1,7 @@
+using Backend.Domain.Interfaces;
 using Backend.Infrastructure.Data;
 
-namespace Backend.Domain.Services.OrderService
+namespace Backend.Application.Services
 {
     public class OrderService : IOrderService
     {
