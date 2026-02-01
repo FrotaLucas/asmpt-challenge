@@ -1,0 +1,10 @@
+❗ Um Order não pode ser baixado para produção se não tiver Boards
+
+❗ Um Board não pode ter dimensões negativas
+
+❗ Um Component precisa ter quantidade ≥ 1
+
+❗ Um Order só pode ser fechado após o download para a linha
+
+
+REGRA DE NEGOCIO ESTAO NO DOMAIN
