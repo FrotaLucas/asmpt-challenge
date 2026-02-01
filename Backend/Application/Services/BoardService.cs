@@ -2,6 +2,7 @@ using Backend.Infrastructure.Data;
 using Backend.Domain.Entities;
 using Backend.Domain.Interfaces;
 using Backend.Application.Responses;
+using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Application.Services
 {
@@ -11,9 +12,6 @@ namespace Backend.Application.Services
 
         private readonly ILogger<BoardService> _logger;
 
-        //LogError
-        //_logger.LogError(ex, "Error fetching boards");
-
         public BoardService(DataContext context, ILogger<BoardService> logger)
         {
             _context = context;
@@ -22,7 +20,7 @@ namespace Backend.Application.Services
 
         public async Task<ServiceResponse<List<Board>>> GetAllBoardsAsync()
         {
-            List<Board> boards = _context.Boards.ToList();
+            List<Board> boards = await _context.Boards.ToListAsync();
 
             if(boards == null || boards.Count == 0)
             {
@@ -32,7 +30,7 @@ namespace Backend.Application.Services
                     Success = false,
                     Message = "No boards found."
                 };
-                
+
                 _logger.LogWarning("No boards found in the database.");
                 return response;
             }
@@ -44,28 +42,95 @@ namespace Backend.Application.Services
             };
         }
 
-        public Task<ServiceResponse<Board>> GetBoardByIdAsync(int id)
+        public async Task<ServiceResponse<Board>> GetBoardByIdAsync(int id)
         {
-            throw new NotImplementedException();
-        }
+            Board? board = await _context.Boards.FindAsync(id);
 
-        public async Task<ServiceResponse<Board>> CreateBoardAsync(Board board)
-        {
-            await _context.Boards.AddAsync(board);
-            await _context.SaveChangesAsync();
+            if(board == null)
+            {
+                var response = new ServiceResponse<Board>()
+                {
+                    Data = null,
+                    Success = false,
+                    Message = $"Board with ID {id} not found."
+                };
+                _logger.LogWarning("Board with ID {BoardId} not found.", id);
+                return response;
+            }
+
             return new ServiceResponse<Board>()
             {
                 Data = board,
                 Success = true
             };
         }
-        public Task<ServiceResponse<bool>> DeleteBoardAsync(int id)
+
+        public async Task<ServiceResponse<Board>> CreateBoardAsync(Board board)
         {
-            throw new NotImplementedException();
+            await _context.Boards.AddAsync(board);
+            await _context.SaveChangesAsync();
+
+            return new ServiceResponse<Board>()
+            {
+                Data = board,
+                Success = true
+            };
         }
-        public Task<ServiceResponse<Board>> UpdateBoardAsync(Board board)
+
+        public async Task<ServiceResponse<bool>> DeleteBoardAsync(int id)
         {
-            throw new NotImplementedException();
+            Board? board = await _context.Boards.FindAsync(id);
+
+            if(board == null)
+            {
+                var response = new ServiceResponse<bool>()
+                {
+                    Data = false,
+                    Success = false,
+                    Message = $"Board with ID {id} not found."
+                };
+                _logger.LogWarning("Board with ID {BoardId} not found.", id);
+                return response;
+            }
+
+            _context.Boards.Remove(board);
+            await _context.SaveChangesAsync();
+
+            return new ServiceResponse<bool>()
+            {
+                Data = true,
+                Success = true
+            };
+        }
+
+        public async Task<ServiceResponse<Board>> UpdateBoardAsync(Board board)
+        {
+            Board? existingBoard = await _context.Boards.FindAsync(board.Id);
+
+            if(existingBoard == null)
+            {
+                var response = new ServiceResponse<Board>()
+                {
+                    Data = null,
+                    Success = false,
+                    Message = $"Board with ID {board.Id} not found."
+                };
+
+                _logger.LogWarning("Board with ID {BoardId} not found.", board.Id);
+                return response;
+            }
+
+            existingBoard.Name = board.Name;
+            existingBoard.Description = board.Description;
+
+            _context.Boards.Update(existingBoard);
+            await _context.SaveChangesAsync();
+
+            return new ServiceResponse<Board>()
+            {
+                Data = existingBoard,
+                Success = true
+            };
         }
     }
 }
