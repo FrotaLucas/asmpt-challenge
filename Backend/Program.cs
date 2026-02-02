@@ -26,14 +26,11 @@ builder.Services.AddScoped<IBoardService, BoardService>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Swagger UI
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI(c =>
-{
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "api v1");
-});
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
