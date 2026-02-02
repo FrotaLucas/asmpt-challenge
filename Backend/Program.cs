@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using Backend.Application.Services;
 using Backend.Domain.Interfaces;
 using Backend.Infrastructure.Data;
@@ -22,7 +23,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 builder.Services.AddScoped<IBoardService, BoardService>();
-
+builder.Services.AddScoped<IComponentService, ComponentService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 
 var app = builder.Build();
 
