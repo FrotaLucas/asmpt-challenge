@@ -1,6 +1,79 @@
+########
+#BACKEND
+########
+
 bin/
 obj/
 .vs/
 Yuri_screen.pptx
 yuri_perguntas/txt
-log-2026*
+
+
+
+#########
+#FRONTEND
+#########
+
+# Compiled output
+Frontend/dist/
+Frontend/tmp/
+Frontend/out-tsc/
+Frontend/bazel-out/
+
+# Node
+Frontend/node_modules/
+Frontend/npm-debug.log/
+Frontend/yarn-error.log/
+
+
+
+
+# Miscellaneous
+Frontend/.angular/cache
+.sass-cache/
+/connect.lock
+Frontend/coverage
+/libpeerconnection.log
+testem.log
+/typings
+
+# System files
+.DS_Store
+Thumbs.db
+
+
+###########
+#IDEs and editors
+###########
+.c9/
+*.launch
+*.sublime-workspace
+
+#Visual Studio
+.vs/
+
+#Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+#JetBrains / IntelliJ
+.idea/
+
+#Eclipse 
+.project
+.classpath
+.settings/
+
+
+
+####
+#Logs and temp files
+####
+*.log
+log*
+*.tmp
+*.temp
