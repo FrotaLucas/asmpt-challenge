@@ -1,7 +1,7 @@
 namespace Backend.Api.Controllers
 {
     using Backend.Domain.Entities;
-    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc; 
     using Backend.Domain.Interfaces;
     using Backend.Application.Responses;
 
