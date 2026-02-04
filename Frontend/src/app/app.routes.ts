@@ -17,8 +17,9 @@ export const routes: Routes = [
                 path: 'boards',
                 component: BoardComponent
             },
-            {path: 'orders',
-             component: OrderComponent
+            {
+                path: 'orders',
+                component: OrderComponent
             }]
     }
 ];
