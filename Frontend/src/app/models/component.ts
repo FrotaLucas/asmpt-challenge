@@ -1,4 +1,4 @@
-export type Component = {
+export interface Component {
     id: number,
     code: string
     name: string
