@@ -5,10 +5,16 @@ import { BoardComponent } from './views/board/board.component';
 
 export const routes: Routes = [
     {
-        path:' ', 
+        path: '',
         component: BaseViewComponent,
         children: [
-            {path: 'components', component: ComponentComponent},
-            {path: 'boards', component: BoardComponent}]
+            {
+                path: 'components',
+                component: ComponentComponent
+            },
+            {
+                path: 'boards',
+                component: BoardComponent
+            },]
     }
 ];
