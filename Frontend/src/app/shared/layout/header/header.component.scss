@@ -1,0 +1,61 @@
+/* * {
+  margin: 0;
+} */
+
+
+header {
+  background-image: linear-gradient(white, blue);
+  min-height: 150px;
+  text-align: center;
+  padding-top: 40px;
+}
+
+header>h1 {
+  color: white;
+  font-size: 3rem;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+header>p {
+  color: white;
+  font-size: 15px;
+}
+
+.logout-button {
+  color: #dc3545;
+  font-weight: 500;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.logout-button:hover {
+  background-color: rgba(220, 53, 69, 0.1);
+  color: #a71d2a;
+}
+
+nav {
+
+  background-color: #f8f9fa;
+  min-height: 2rem;
+}
+
+.my-nav-bar {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin-left: 1.8rem;
+  margin-right: 1.8rem;
+}
+
+.commands {
+  display: flex;
+}
+
+
+ul {
+  padding: unset;
+}

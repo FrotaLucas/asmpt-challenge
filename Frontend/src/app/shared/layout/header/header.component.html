@@ -1,1 +1,46 @@
-<p>header works!</p>
+<div>
+
+  <header>
+    <h1> ASMPT platform</h1>
+    <p>smart solution for SMT Order management</p>
+  </header>
+
+  
+  <nav>
+    <ul class="my-nav-bar">
+
+      <div class="commands">
+        <li > 
+          <a routerLink="/components" class="m-1 btn btn-light btn-outline-primary">Components</a>
+        </li>
+  
+        <li class="nav-item">
+          <a routerLink="/boards" class="m-1 btn btn-light btn-outline-primary">Boards</a>
+        </li>
+  
+        <li class="nav-item">
+          <a routerLink="/Orders" class="m-1 btn btn-light btn-outline-primary">Orders</a>
+        </li>
+  
+      </div>
+
+      <li class="nav-item dropdown">
+        <a class="btn btn-light btn-outline-primary dropdown-toggle m-1" href="#" id="adminDropdown" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Menu
+        </a>
+        <div class="dropdown-menu" aria-labelledby="adminDropdown">
+          <a class="dropdown-item" routerLink="/new-order">new order</a>
+          <a class="dropdown-item" routerLink="/status">Account</a>
+          <a class="dropdown-item" routerLink="/user/edit">Settings</a>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-item logout-button" >Logout</button>
+        </div>
+      </li>
+
+
+    </ul>
+  </nav>
+
+
+</div>
