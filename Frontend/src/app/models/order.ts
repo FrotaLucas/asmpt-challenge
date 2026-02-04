@@ -1,4 +1,4 @@
-export interface Order {
+export interface OrderDto {
     id: number,
     code: string,
     OrderNumber: string,

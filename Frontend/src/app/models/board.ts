@@ -1,4 +1,4 @@
-export interface Board {
+export interface BoardDto {
     id: number,
     name: string,
     description: string,

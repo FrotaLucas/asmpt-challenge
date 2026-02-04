@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { environment } from "../environments/environment.development";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { Board } from "../models/board";
+import { BoardDto } from "../models/board";
 
 
 @Injectable({
@@ -19,23 +19,23 @@ export class BoardService {
         this.api = "/boards"
     }
 
-    getBoards(): Observable<Board[]> {
-        return this.http.get<Board[]>(`${this.app}${this.api}`);
+    getBoards(): Observable<BoardDto[]> {
+        return this.http.get<BoardDto[]>(`${this.app}${this.api}`);
     }
 
-    getBoard(id: number): Observable<Board> {
-        return this.http.get<Board>(`${this.app}${this.api}/${id}`);
+    getBoard(id: number): Observable<BoardDto> {
+        return this.http.get<BoardDto>(`${this.app}${this.api}/${id}`);
     }
 
-    createBoard(board: Board): Observable<Board> {
-        return this.http.post<Board>(`${this.app}${this.api}`, board);
+    createBoard(board: BoardDto): Observable<BoardDto> {
+        return this.http.post<BoardDto>(`${this.app}${this.api}`, board);
     }
 
     deleteBoard(id: number): Observable<void>{
         return this.http.delete<void>(`${this.app}${this.api}/${id}`);
     }
 
-    updateBoard(board: Board): Observable<Board>{
-        return this.http.put<Board>(`${this.app}${this.api}`, board);
+    updateBoard(board: BoardDto): Observable<BoardDto>{
+        return this.http.put<BoardDto>(`${this.app}${this.api}`, board);
     }
 }

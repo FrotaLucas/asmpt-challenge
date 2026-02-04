@@ -1,4 +1,4 @@
-export interface Component {
+export interface ComponentDto {
     id: number,
     code: string
     name: string

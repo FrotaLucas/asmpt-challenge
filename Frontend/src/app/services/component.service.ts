@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { Component } from "../models/component";
+import { ComponentDto } from "../models/component";
 import { environment } from "../environments/environment.development";
 import { Injectable } from "@angular/core";
 
@@ -18,16 +18,16 @@ export class ComponentService {
         this.api = "/components";
     }
 
-    getComponents(): Observable<Component[]> {
-        return this.http.get<Component[]>(`${this.app}${this.api}`);
+    getComponents(): Observable<ComponentDto[]> {
+        return this.http.get<ComponentDto[]>(`${this.app}${this.api}`);
     }
 
-    getComponent(id:number): Observable<Component> {
-        return this.http.get<Component>(`${this.app}${this.api}/${id}`)
+    getComponent(id:number): Observable<ComponentDto> {
+        return this.http.get<ComponentDto>(`${this.app}${this.api}/${id}`)
     }
 
-    createComponent(component: Component): Observable<Component>{
-        return this.http.post<Component>(`${this.app}${this.api}`, component);
+    createComponent(component: ComponentDto): Observable<ComponentDto>{
+        return this.http.post<ComponentDto>(`${this.app}${this.api}`, component);
     }
 
     //backend reuturn object with boolean
