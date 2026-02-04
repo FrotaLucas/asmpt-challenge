@@ -1,4 +1,4 @@
-export type Order = {
+export interface Order {
     id: number,
     code: string,
     OrderNumber: string,
