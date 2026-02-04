@@ -15,7 +15,7 @@ export class ComponentService {
 
     constructor(private http: HttpClient) {
         this.app = environment.baseUrl;
-        this.api = "/component";
+        this.api = "/components";
     }
 
     getComponents(): Observable<Component[]> {
