@@ -35,7 +35,9 @@ export class AddComponentComponent implements OnInit {
   form!: FormGroup;
   listOfComponents!: ComponentDto[];
 
-  constructor(private fb: FormBuilder, private componentService: ComponentService, private snackBar: MatSnackBar) {
+  constructor(private fb: FormBuilder, private componentService: ComponentService, private snackBar: MatSnackBar,
+    private dialog: MatDialogRef<AddComponentComponent>
+  ) {
 
   }
 
@@ -54,9 +56,13 @@ export class AddComponentComponent implements OnInit {
     this.componentService.createComponent(component).subscribe({
       next: (data) => {
         this.form.reset();
+        this.dialog.close(true);
         this.snackBar.open("Component added successfully", "", { duration: 2000 })
       },
-      error: (err) => console.error("error on adding component", err)
+      error: (err) => {
+        console.error("error on adding component", err);
+        this.dialog.close(false);
+      }
     })
   }
 

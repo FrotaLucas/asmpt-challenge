@@ -16,7 +16,6 @@ import { MatTableModule, MatCellDef, MatHeaderCellDef, MatTableDataSource } from
 
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatTooltip } from '@angular/material/tooltip';
 import { AddComponentComponent } from '../../shared/components/add-component/add-component.component';
 
 @Component({
@@ -24,7 +23,7 @@ import { AddComponentComponent } from '../../shared/components/add-component/add
   standalone: true,
   imports: [CommonModule, RouterModule, MatIconModule,
     MatLabel, MatFormField, MatInput, MatTableModule, MatCellDef, MatHeaderCellDef,
-    MatPaginator, MatSortModule, MatTooltip],
+    MatPaginator, MatSortModule],
   templateUrl: './component.component.html',
   styleUrl: './component.component.scss'
 })
@@ -41,8 +40,7 @@ export class ComponentComponent implements OnInit, AfterViewInit {
 
 
   constructor(private router: Router, private dialog: MatDialog,
-     private snackBar: MatSnackBar, private _componentService: ComponentService)
-  {
+    private snackBar: MatSnackBar, private _componentService: ComponentService) {
     this.dataSource = new MatTableDataSource();
   }
 
@@ -88,11 +86,18 @@ export class ComponentComponent implements OnInit, AfterViewInit {
     this.dataSource.filter = filteredData.trim().toLowerCase();
   }
 
-    addComponent(): void {
-      const dialogRef = this.dialog.open(AddComponentComponent, {
+  addComponent(): void {
+    const dialogRef = this.dialog.open(AddComponentComponent, {
       width: '600px',
     });
 
+    dialogRef.afterClosed().subscribe(
+      res => {
+        if (res = true) {
+          this.refreshPage();
+        }
+      }
+    )
   }
 
   navigateTo(): void {
