@@ -3,14 +3,12 @@ import { ComponentService } from '../../services/component.service';
 import { ComponentDto } from '../../models/component';
 import { componentColumns } from '../../models/component-column';
 
-
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
-import { HttpClient } from '@angular/common/http';
 
 import { MatLabel, MatFormField } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
@@ -41,7 +39,7 @@ export class ComponentComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) refMatPaginator!: MatPaginator;
 
 
-  constructor(private router: Router, private dialog: MatDialog, private componentService: ComponentService) {
+  constructor(private router: Router, private dialog: MatDialog, private snackBar: MatSnackBar, private componentService: ComponentService) {
     this.dataSource = new MatTableDataSource();
   }
 
@@ -57,7 +55,6 @@ export class ComponentComponent implements OnInit, AfterViewInit {
   }
 
   refreshPage(): void {
-    console.log("lisssssssssssssssssst" + this.listOfComponents);
     this.componentService.getComponents().subscribe({
       next: (data) => {
         this.listOfComponents = data;
@@ -65,11 +62,35 @@ export class ComponentComponent implements OnInit, AfterViewInit {
         console.log(this.listOfComponents);
       },
 
-      error: (err) => console.error("error refresh page", err)
+      error: (err) => console.error("error on refreshing page", err)
     })
+  }
 
+  deleteComponent(id: number): void {
 
+    this.componentService.deleteComponent(id).subscribe({
+      next: () => {
+        this.refreshPage();
+      },
+      error: (err) => console.error("error on deleting component", err)
+    });
+
+    this.snackBar.open('successfully deleted', '', { duration: 2000 });
+  };
+
+  editComponent(component: ComponentDto): void {
+    //implement
+  };
+
+  applyFilter(event: Event) {
+    const filteredData = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filteredData.trim().toLowerCase();
+  }
+
+  navigateTo(): void {
 
   }
 
 }
+
+
