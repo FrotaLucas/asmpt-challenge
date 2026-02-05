@@ -17,6 +17,7 @@ import { MatTableModule, MatCellDef, MatHeaderCellDef, MatTableDataSource } from
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AddComponentComponent } from '../../shared/components/add-component/add-component.component';
+import { EditComponentComponent } from '../../shared/components/edit-component/edit-component.component';
 
 @Component({
   selector: 'app-component',
@@ -78,7 +79,18 @@ export class ComponentTableComponent implements OnInit, AfterViewInit {
   };
 
   editComponent(component: ComponentDto): void {
-    //implement
+    const dialogRef = this.dialog.open(EditComponentComponent, {
+      width: '600px',
+      data: component
+    })
+
+    dialogRef.afterClosed().subscribe({
+      next: (res => {
+        if (res == true) {
+          this.refreshPage();
+        }
+      })
+    })
   };
 
   applyFilter(event: Event) {
@@ -88,7 +100,7 @@ export class ComponentTableComponent implements OnInit, AfterViewInit {
 
   addComponent(): void {
     const dialogRef = this.dialog.open(AddComponentComponent, {
-      width: '600px',
+      width: '600px'
     });
 
     dialogRef.afterClosed().subscribe(
