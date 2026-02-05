@@ -17,6 +17,7 @@ import { MatTableModule, MatCellDef, MatHeaderCellDef, MatTableDataSource } from
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTooltip } from '@angular/material/tooltip';
+import { AddComponentComponent } from '../../shared/components/add-component/add-component.component';
 
 @Component({
   selector: 'app-component',
@@ -39,7 +40,8 @@ export class ComponentComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) refMatPaginator!: MatPaginator;
 
 
-  constructor(private router: Router, private dialog: MatDialog, private snackBar: MatSnackBar, private _componentService: ComponentService)
+  constructor(private router: Router, private dialog: MatDialog,
+     private snackBar: MatSnackBar, private _componentService: ComponentService)
   {
     this.dataSource = new MatTableDataSource();
   }
@@ -86,7 +88,15 @@ export class ComponentComponent implements OnInit, AfterViewInit {
     this.dataSource.filter = filteredData.trim().toLowerCase();
   }
 
+    addComponent(): void {
+      const dialogRef = this.dialog.open(AddComponentComponent, {
+      width: '600px',
+    });
+
+  }
+
   navigateTo(): void {
+    //implement
 
   }
 
