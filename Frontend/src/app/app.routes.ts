@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { BaseViewComponent } from './shared/layout/base-view/base-view.component';
 import { ComponentTableComponent } from './views/component-table/component-table.component';
 import { BoardTableComponent } from './views/board-table/board-table.component';
-import { OrderComponent } from './views/order/order.component';
+import { OrderTableComponent } from './views/order-table/order-table.component';
 
 export const routes: Routes = [
     {
@@ -19,7 +19,7 @@ export const routes: Routes = [
             },
             {
                 path: 'orders',
-                component: OrderComponent
+                component: OrderTableComponent
             }]
     }
 ];
