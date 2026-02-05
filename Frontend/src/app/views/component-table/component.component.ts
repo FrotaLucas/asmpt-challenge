@@ -39,7 +39,7 @@ export class ComponentComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) refMatPaginator!: MatPaginator;
 
 
-  constructor(private router: Router, private dialog: MatDialog, private snackBar: MatSnackBar, private componentService: ComponentService)
+  constructor(private router: Router, private dialog: MatDialog, private snackBar: MatSnackBar, private _componentService: ComponentService)
   {
     this.dataSource = new MatTableDataSource();
   }
@@ -54,7 +54,7 @@ export class ComponentComponent implements OnInit, AfterViewInit {
   }
 
   refreshPage(): void {
-    this.componentService.getComponents().subscribe({
+    this._componentService.getComponents().subscribe({
       next: (data) => {
         // this.listOfComponents = data;
         this.dataSource.data = data;
@@ -67,7 +67,7 @@ export class ComponentComponent implements OnInit, AfterViewInit {
 
   deleteComponent(id: number): void {
 
-    this.componentService.deleteComponent(id).subscribe({
+    this._componentService.deleteComponent(id).subscribe({
       next: () => {
         this.refreshPage();
       },
