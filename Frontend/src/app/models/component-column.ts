@@ -1,5 +1,4 @@
 const componentColumns: string[] = [
-    'id',
     'code',
     'name',
     'description',
