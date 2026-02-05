@@ -71,14 +71,8 @@ namespace Backend.Api.Controllers
             return Ok(result);
         }
 
-        [HttpPut("{id}")]
-        public async Task<ActionResult<ServiceResponse<Board>>> UpdateBoard(int id, Board board)
+        public async Task<ActionResult<ServiceResponse<Board>>> UpdateBoard(Board board)
         {
-            if (id != board.Id)
-            {
-                return BadRequest();
-            }
-
             var result = await _boardService.UpdateBoardAsync(board);
 
             if (!result.Success)

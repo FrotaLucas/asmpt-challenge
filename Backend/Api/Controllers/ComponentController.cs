@@ -77,7 +77,7 @@ namespace Backend.Api.Controllers
             return Ok(result);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
         public async Task<ActionResult<ServiceResponse<Component>>> UpdateComponent(Component component)
         {
             var result = await _componentService.UpdateComponentAsync(component);
