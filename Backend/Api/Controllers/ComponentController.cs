@@ -7,7 +7,7 @@ using Backend.Domain.Entities;
 namespace Backend.Api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/components")]
     public class ComponentController : ControllerBase
     {
         private readonly IComponentService _componentService;

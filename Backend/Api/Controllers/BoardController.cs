@@ -6,7 +6,7 @@ namespace Backend.Api.Controllers
     using Backend.Application.Responses;
 
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/boards")]
     public class BoardController : ControllerBase
     {
         private readonly IBoardService _boardService;
