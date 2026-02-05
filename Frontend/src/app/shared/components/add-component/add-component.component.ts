@@ -55,7 +55,8 @@ export class AddComponentComponent implements OnInit {
       next: (data) => {
         this.form.reset();
         this.snackBar.open("Component added successfully", "", { duration: 2000 })
-      }
+      },
+      error: (err) => console.error("error on adding component", err)
     })
   }
 

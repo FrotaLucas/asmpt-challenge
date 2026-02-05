@@ -8,12 +8,13 @@ table {
   border-width: 10px black;
 }
 
+
 .mat-mdc-table .mdc-data-table__row {
   transition: background-color 0.2s ease;
 }
 
 .mat-mdc-table .mdc-data-table__row:hover {
-  background-color: #e3f2fd !important; 
+  background-color: #fdeae3 !important; 
   cursor: pointer;
 }
 
