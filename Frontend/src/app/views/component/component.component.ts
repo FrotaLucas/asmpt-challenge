@@ -39,11 +39,10 @@ export class ComponentComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) refMatPaginator!: MatPaginator;
 
 
-  constructor(private router: Router, private dialog: MatDialog, private snackBar: MatSnackBar, private componentService: ComponentService) {
+  constructor(private router: Router, private dialog: MatDialog, private snackBar: MatSnackBar, private componentService: ComponentService)
+  {
     this.dataSource = new MatTableDataSource();
   }
-
-
 
   ngOnInit(): void {
     this.refreshPage();
@@ -57,9 +56,9 @@ export class ComponentComponent implements OnInit, AfterViewInit {
   refreshPage(): void {
     this.componentService.getComponents().subscribe({
       next: (data) => {
-        this.listOfComponents = data;
+        // this.listOfComponents = data;
         this.dataSource.data = data;
-        console.log(this.listOfComponents);
+        // console.log(this.listOfComponents);
       },
 
       error: (err) => console.error("error on refreshing page", err)
