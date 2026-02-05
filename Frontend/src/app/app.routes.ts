@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 import { BaseViewComponent } from './shared/layout/base-view/base-view.component';
-import { ComponentComponent } from './views/component-table/component.component';
-import { BoardComponent } from './views/board-table/board.component';
-import { OrderComponent } from './views/order-table/order.component';
+import { ComponentTableComponent } from './views/component-table/component-table.component';
+import { BoardTableComponent } from './views/board-table/board-table.component';
+import { OrderComponent } from './views/order/order.component';
 
 export const routes: Routes = [
     {
@@ -11,11 +11,11 @@ export const routes: Routes = [
         children: [
             {
                 path: 'components',
-                component: ComponentComponent
+                component: ComponentTableComponent
             },
             {
                 path: 'boards',
-                component: BoardComponent
+                component: BoardTableComponent
             },
             {
                 path: 'orders',
