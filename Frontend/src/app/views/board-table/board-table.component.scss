@@ -1,0 +1,67 @@
+.show-container {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+table {
+  background-color: white !important;
+  border-width: 10px black;
+}
+
+
+.mat-mdc-table .mdc-data-table__row {
+  transition: background-color 0.2s ease;
+}
+
+.mat-mdc-table .mdc-data-table__row:hover {
+  background-color: #fdeae3 !important; 
+  cursor: pointer;
+}
+
+.custom-paginator {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  background-color: white !important;
+}
+
+
+.icon {
+  cursor: pointer;
+  font-size: 24px;
+  vertical-align: middle;
+}
+
+.edit-icon {
+  color: #1976d2;
+  border: unset;
+  background-color: unset;
+}
+
+.delete-icon {
+  color: #e53935;
+  border: unset;
+  background-color: unset;
+
+}
+
+
+.all-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.all-buttons > button {
+  height: 40px;
+}
+
+
+.input {
+  margin-top: 1rem;
+  width: 50%;
+  font-size: 14px;
+  margin-right: 10px;
+
+}
