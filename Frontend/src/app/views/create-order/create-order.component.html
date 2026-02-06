@@ -1,13 +1,15 @@
 <div>
+
     <div class="title">
         <h2> Create new Order </h2>
-        <button (click)="addNewBoadComponent()">Add new Board +</button>
+        <button (click)="addNewBoadComponent()" class="btn btn-light btn-outline-danger">Add new Board +</button>
     </div>
 
 
-    <app-order-board *ngFor="let board of boards; let i = index" [boardIndex]="i"/>
-  
-
-    <button>Send Order</button>
+    <div class="box-of-boards">
+        <app-order-board *ngFor="let board of boards; let i = index" [boardIndex]="i"/>
+      
+        <button class="btn btn-light btn-outline-danger">Send Order</button>
+    </div>
 
 </div>

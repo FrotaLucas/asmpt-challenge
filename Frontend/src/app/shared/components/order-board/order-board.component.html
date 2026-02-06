@@ -4,15 +4,15 @@
     <div class="board-container">
 
         <div class="board">
-            <mat-label>Board</mat-label>
-            <mat-form-field class="input" appearance="outline">
+            <mat-label>Board: </mat-label>
+            <mat-form-field class="input input-board" appearance="outline">
                 <input matInput placeholder="new board" type="text">
             </mat-form-field>
         </div>
 
         <app-board-component *ngFor="let component of components, let i = index", [componentIndex]= "i" />
 
-        <button (click)="addNewComponent()">Add Component</button>
+        <button (click)="addNewComponent()" class="add-component btn btn-light btn-outline-danger">Add Component</button>
     </div>
 
 </div>
