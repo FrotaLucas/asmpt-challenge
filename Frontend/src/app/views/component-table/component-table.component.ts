@@ -57,9 +57,7 @@ export class ComponentTableComponent implements OnInit, AfterViewInit {
   refreshPage(): void {
     this._componentService.getComponents().subscribe({
       next: (data) => {
-        // this.listOfComponents = data;
         this.dataSource.data = data;
-        // console.log(this.listOfComponents);
       },
 
       error: (err) => console.error("error on refreshing page", err)
