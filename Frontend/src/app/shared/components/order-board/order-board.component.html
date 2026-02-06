@@ -1,12 +1,18 @@
 <div>
     <h5>New Board: </h5>
 
-    <div class="board">
-        <mat-label>Board</mat-label>
-        <mat-form-field class="input" appearance="outline">
-            <input matInput placeholder="new board" type="text" formControlName="">
-        </mat-form-field>
+    <div class="board-container">
 
+        <div class="board">
+            <mat-label>Board</mat-label>
+            <mat-form-field class="input" appearance="outline">
+                <input matInput placeholder="new board" type="text">
+            </mat-form-field>
+        </div>
+
+        <app-board-component *ngFor="let component of components, let i = index", [componentIndex]= "i" />
+
+        <button (click)="addNewComponent()">Add Component</button>
     </div>
 
 </div>
