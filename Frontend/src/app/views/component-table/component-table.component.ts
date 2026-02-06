@@ -4,7 +4,6 @@ import { ComponentDto } from '../../models/component';
 import { componentColumns } from '../../models/component-column';
 
 import { CommonModule } from '@angular/common';
-import { Router, RouterModule } from '@angular/router';
 
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
@@ -22,7 +21,7 @@ import { EditComponentComponent } from '../../shared/components/edit-component/e
 @Component({
   selector: 'app-component',
   standalone: true,
-  imports: [CommonModule, RouterModule, MatIconModule,
+  imports: [CommonModule, MatIconModule,
     MatLabel, MatFormField, MatInput, MatTableModule, MatCellDef, MatHeaderCellDef,
     MatPaginator, MatSortModule],
   templateUrl: './component-table.component.html',
@@ -31,8 +30,6 @@ import { EditComponentComponent } from '../../shared/components/edit-component/e
 
 export class ComponentTableComponent implements OnInit, AfterViewInit {
 
-
-  listOfComponents!: ComponentDto[];
   displayedColumns: string[] = componentColumns;
 
   dataSource!: MatTableDataSource<ComponentDto>
@@ -40,7 +37,7 @@ export class ComponentTableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) refMatPaginator!: MatPaginator;
 
 
-  constructor(private router: Router, private dialog: MatDialog,
+  constructor(private dialog: MatDialog,
     private snackBar: MatSnackBar, private _componentService: ComponentService) {
     this.dataSource = new MatTableDataSource();
   }
@@ -109,12 +106,6 @@ export class ComponentTableComponent implements OnInit, AfterViewInit {
       }
     )
   }
-
-  navigateTo(): void {
-    //implement
-
-  }
-
 }
 
 
