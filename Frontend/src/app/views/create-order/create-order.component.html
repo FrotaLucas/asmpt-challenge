@@ -1,1 +1,21 @@
-<p>create-order works!</p>
+<div>
+    <div class="title">
+        <h2> Create new Order </h2>
+        <button (click)="addNewBoadComponent()">Add new Board +</button>
+    </div>
+
+    <!-- bloco new board -->
+    <div>
+        <h5>New Board: </h5>
+        <div>
+            <mat-label>Board</mat-label>
+            <mat-form-field class="input" appearance="outline">
+                <input matInput placeholder="new board" type="text" formControlName="">
+            </mat-form-field>
+        </div>
+
+    </div>
+
+    <button>Send Order</button>
+
+</div>
