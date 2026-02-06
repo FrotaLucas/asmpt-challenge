@@ -1,1 +1,41 @@
-<p>add-board works!</p>
+<h2>
+    <ng-container>
+        Add Board
+    </ng-container>
+</h2>
+
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="board-form">
+
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Code</mat-label>
+        <input matInput formControlName="code" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="description" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Width(mm)</mat-label>
+        <input matInput formControlName="width" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Length(mm)</mat-label>
+        <input matInput formControlName="length" />
+    </mat-form-field>
+
+    <div style="margin-top: 20px;">
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+            Save
+        </button>
+    </div>
+
+</form>
