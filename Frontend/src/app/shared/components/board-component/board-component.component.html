@@ -3,9 +3,14 @@
     <mat-label>Component: </mat-label>
     <mat-form-field class="input input-component" appearance="outline">
 
-        <mat-select [(value)]="selectedComponent" (selectionChange)="onSelectionChange($event.value)">
+         <!-- 1 -->
+        <!-- <mat-select [(value)]="selectedComponent" (selectionChange)="onSelectionChange($event.value)"> -->
+
+        <!-- 2 -->
+        <mat-select [(value)]="selectedComponent" (selectionChange)="onSelectionChange($event)">
+
             <mat-option *ngFor="let item of components" [value]="item">
-                {{item.code}}
+                {{item}}
             </mat-option>
 
         </mat-select>
