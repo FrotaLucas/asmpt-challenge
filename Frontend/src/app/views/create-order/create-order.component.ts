@@ -23,7 +23,7 @@ export class CreateOrderComponent {
 
   }
 
-  addNewBoadComponent(): void{
+  addNewBoard(): void{
 
     this.boards.push(this.boards.length);
   }
