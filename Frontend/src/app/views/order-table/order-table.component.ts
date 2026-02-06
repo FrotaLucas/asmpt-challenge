@@ -4,6 +4,7 @@ import { OrderDto } from '../../models/order';
 import { orderColumns } from '../../models/order-columns';
 import { CommonModule } from '@angular/common';
 
+import { Router, RouterModule } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
@@ -19,7 +20,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   selector: 'app-order-table',
   imports: [CommonModule, MatIconModule,
     MatLabel, MatFormField, MatInput, MatTableModule, MatCellDef, MatHeaderCellDef,
-    MatPaginator, MatSortModule],
+    MatPaginator, MatSortModule, RouterModule],
   templateUrl: './order-table.component.html',
   styleUrl: './order-table.component.scss'
 })
@@ -33,7 +34,7 @@ export class OrderTableComponent implements OnInit {
   @ViewChild(MatPaginator) refMatPaginator!: MatPaginator;
 
 
-  constructor() {
+  constructor(private router: Router) {
 
   }
 
@@ -44,5 +45,9 @@ export class OrderTableComponent implements OnInit {
   applyFilter(event: Event) {
     const filteredData = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filteredData.trim().toLowerCase();
+  }
+
+  navigateTo(): void {
+    this.router.navigate(["orders/new"]);
   }
 }
