@@ -71,6 +71,7 @@ namespace Backend.Api.Controllers
             return Ok(result);
         }
 
+        [HttpPut]
         public async Task<ActionResult<ServiceResponse<Board>>> UpdateBoard(Board board)
         {
             var result = await _boardService.UpdateBoardAsync(board);
