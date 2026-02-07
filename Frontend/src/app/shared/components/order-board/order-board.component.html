@@ -4,9 +4,16 @@
     <div class="board-container">
 
         <div class="board">
+       
             <mat-label>Board: </mat-label>
-            <mat-form-field class="input input-board" appearance="outline">
-                <input matInput placeholder="new board" type="text">
+            <mat-form-field class="input" appearance="outline">
+                <mat-select [(value)]="selectedBoard" 
+                (selectionChange)="onSelectionBoard($event.value)" 
+                placeholder="select a board">
+                    <mat-option *ngFor="let item of boards" [value]="item">
+                        {{item.code}}
+                    </mat-option>
+                </mat-select>
             </mat-form-field>
         </div>
 
