@@ -5,10 +5,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIcon } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BoardService } from '../../../services/board.service';
 
@@ -18,10 +15,7 @@ import { BoardService } from '../../../services/board.service';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatNativeDateModule,
-    MatRadioModule,
     MatButtonModule,
-    MatIcon,
   ],
   templateUrl: './add-board.component.html',
   styleUrl: './add-board.component.scss'

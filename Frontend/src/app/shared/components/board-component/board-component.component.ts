@@ -1,31 +1,30 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { MatFormField, MatLabel, } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import { MatFormField } from '@angular/material/form-field';
 import { ComponentDto } from '../../../models/component';
 import { ComponentService } from '../../../services/component.service';
 import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-board-component',
-  imports: [CommonModule, MatFormField, MatLabel, MatInputModule, MatSelectModule],
+  imports: [CommonModule, MatFormField, MatSelectModule],
   templateUrl: './board-component.component.html',
   styleUrl: './board-component.component.scss'
 })
 
-export class BoardComponentComponent implements OnInit{
+export class BoardComponentComponent implements OnInit {
 
   availableComponents!: ComponentDto[];
   selectedComponent!: ComponentDto;
 
-  constructor(private _componentService: ComponentService){
+  constructor(private _componentService: ComponentService) {
 
   }
 
-  @Input() componentIndex! : number;
+  @Input() componentIndex!: number;
 
   ngOnInit(): void {
-      this.loadComponents();
+    this.loadComponents();
   }
 
   loadComponents(): void {
@@ -36,7 +35,7 @@ export class BoardComponentComponent implements OnInit{
     })
   }
 
-  onSelectionChange(component: ComponentDto){
+  onSelectionChange(component: ComponentDto) {
     this.selectedComponent = component;
   }
 

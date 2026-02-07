@@ -19,7 +19,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-order-table',
   imports: [CommonModule, MatIconModule,
-    MatLabel, MatFormField, MatInput, MatTableModule, MatCellDef, MatHeaderCellDef,
+    MatLabel, MatFormField, MatInput, MatTableModule,
     MatPaginator, MatSortModule, RouterModule],
   templateUrl: './order-table.component.html',
   styleUrl: './order-table.component.scss'

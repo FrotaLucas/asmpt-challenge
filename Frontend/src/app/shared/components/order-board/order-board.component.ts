@@ -6,10 +6,12 @@ import { MatLabel, MatFormField } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { BoardComponentComponent } from '../board-component/board-component.component';
 import { CommonModule } from '@angular/common';
+import { BoardService } from '../../../services/board.service';
+
 
 @Component({
   selector: 'app-order-board',
-  imports: [CommonModule, MatFormField, MatLabel, MatIcon, MatInput, MatIconModule, BoardComponentComponent],
+  imports: [CommonModule, MatFormField, MatLabel, MatInput, MatIconModule, BoardComponentComponent],
   templateUrl: './order-board.component.html',
   styleUrl: './order-board.component.scss'
 })
