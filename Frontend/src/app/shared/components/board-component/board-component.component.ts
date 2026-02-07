@@ -4,10 +4,11 @@ import { MatFormField } from '@angular/material/form-field';
 import { ComponentDto } from '../../../models/component';
 import { ComponentService } from '../../../services/component.service';
 import { MatSelectModule } from '@angular/material/select';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-board-component',
-  imports: [CommonModule, MatFormField, MatSelectModule],
+  imports: [CommonModule, MatFormField, MatSelectModule, ReactiveFormsModule],
   templateUrl: './board-component.component.html',
   styleUrl: './board-component.component.scss'
 })
@@ -15,7 +16,6 @@ import { MatSelectModule } from '@angular/material/select';
 export class BoardComponentComponent implements OnInit {
 
   availableComponents!: ComponentDto[];
-  // selectedComponent!: ComponentDto;
   selectedComponent!: ComponentDto;
 
   constructor(private _componentService: ComponentService) {
@@ -23,11 +23,11 @@ export class BoardComponentComponent implements OnInit {
   }
 
   @Input() componentIndex!: number;
+  @Input() componentGroup!: FormGroup;
 
   ngOnInit(): void {
     
     this.loadComponents();
-    this.selectedComponent = {id : 2, code: "code fixo", description: "des", name: "name"};
   }
 
   loadComponents(): void {

@@ -1,3 +1,5 @@
+<form [formGroup]="orderForm">
+
 <div>
 
     <div class="title">
@@ -7,9 +9,13 @@
 
 
     <div class="box-of-boards">
-        <app-order-board *ngFor="let board of boards; let i = index" [boardIndex]="i"/>
+        <app-order-board *ngFor="let board of boardGroups; let i = index" 
+         [boardIndex]="i"
+         [boardGroup]="board"/>
       
-        <button class="btn btn-light btn-outline-danger">Send Order</button>
+        <button class="btn btn-light btn-outline-danger" (click)="sendOrder()">Send Order</button>
     </div>
 
 </div>
+
+</form>

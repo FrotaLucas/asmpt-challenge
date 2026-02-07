@@ -1,4 +1,4 @@
-<div>
+<div [formGroup]="boardGroup">
     <h5>{{boardIndex + 1}}. Board </h5>
 
     <div class="board-container">
@@ -7,7 +7,7 @@
        
             <mat-label>Board: </mat-label>
             <mat-form-field class="input" appearance="outline">
-                <mat-select [(value)]="selectedBoard" placeholder="select a board">
+                <mat-select [(value)]="selectedBoard" placeholder="select a board" formControlName="board">
                     <mat-option *ngFor="let item of availableBoards" [value]="item">
                         {{item.code}}
                     </mat-option>
@@ -15,7 +15,9 @@
             </mat-form-field>
         </div>
 
-        <app-board-component *ngFor="let component of components, let i = index", [componentIndex]= "i" />
+        <app-board-component *ngFor="let component of componentGroups, let i = index",
+         [componentIndex]= "i" 
+         [componentGroup]="component" />
 
         <button (click)="addNewComponent()" class="add-component btn btn-light btn-outline-danger">Add Component</button>
     </div>

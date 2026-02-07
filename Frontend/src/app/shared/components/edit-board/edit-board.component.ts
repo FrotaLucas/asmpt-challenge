@@ -9,7 +9,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BoardService } from '../../../services/board.service';
-import { BoardDto } from '../../../models/board';
+import type { BoardDto } from '../../../models/board';
 
 
 @Component({

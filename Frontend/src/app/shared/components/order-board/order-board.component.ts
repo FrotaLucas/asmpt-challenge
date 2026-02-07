@@ -9,35 +9,47 @@ import { CommonModule } from '@angular/common';
 import { MatSelect, MatOption, MatSelectModule } from "@angular/material/select";
 import { BoardDto } from '../../../models/board';
 import { BoardService } from '../../../services/board.service';
+import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-order-board',
-  imports: [CommonModule, MatFormField, MatSelectModule, MatLabel, MatIconModule, BoardComponentComponent, MatSelect, MatOption],
+  imports: [CommonModule, MatFormField, MatSelectModule,
+    MatLabel, MatIconModule, BoardComponentComponent, MatSelect, MatOption, ReactiveFormsModule],
   templateUrl: './order-board.component.html',
   styleUrl: './order-board.component.scss'
 })
 
 export class OrderBoardComponent implements OnInit {
 
-  components: number[] = [0];
-
   availableBoards!: BoardDto[];
   selectedBoard!: BoardDto;
 
   @Input() boardIndex!: number;
+  @Input() boardGroup!: FormGroup
 
-  constructor(private _serviceBoard: BoardService){
-
+  constructor(private _serviceBoard: BoardService, private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
-      this.loadBoards();
+    this.loadBoards();
+    this.addNewComponent();
+
   }
 
-  addNewComponent() : void{
+  get components(): FormArray {
+    return this.boardGroup.get("components") as FormArray;
+  }
 
-    this.components.push(this.components.length);
+  get componentGroups(): FormGroup[] {
+    return this.components.controls as FormGroup[];
+  }
+
+  addNewComponent(): void {
+
+    this.components.push(this.fb.group({
+      component: [null]
+    }))
   }
 
   loadBoards(): void {
@@ -47,5 +59,4 @@ export class OrderBoardComponent implements OnInit {
       }
     })
   }
-
 }
