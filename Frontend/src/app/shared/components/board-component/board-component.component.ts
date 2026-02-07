@@ -15,6 +15,7 @@ import { MatSelectModule } from '@angular/material/select';
 export class BoardComponentComponent implements OnInit {
 
   availableComponents!: ComponentDto[];
+  // selectedComponent!: ComponentDto;
   selectedComponent!: ComponentDto;
 
   constructor(private _componentService: ComponentService) {
@@ -24,7 +25,9 @@ export class BoardComponentComponent implements OnInit {
   @Input() componentIndex!: number;
 
   ngOnInit(): void {
+    
     this.loadComponents();
+    this.selectedComponent = {id : 2, code: "code fixo", description: "des", name: "name"};
   }
 
   loadComponents(): void {
@@ -33,10 +36,6 @@ export class BoardComponentComponent implements OnInit {
         this.availableComponents = data;
       }
     })
-  }
-
-  onSelectionChange(component: ComponentDto) {
-    this.selectedComponent = component;
   }
 
 }

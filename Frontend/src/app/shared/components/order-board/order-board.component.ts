@@ -22,7 +22,7 @@ export class OrderBoardComponent implements OnInit {
 
   components: number[] = [0];
 
-  boards!: BoardDto[];
+  availableBoards!: BoardDto[];
   selectedBoard!: BoardDto;
 
   @Input() boardIndex!: number;
@@ -43,12 +43,9 @@ export class OrderBoardComponent implements OnInit {
   loadBoards(): void {
     this._serviceBoard.getBoards().subscribe({
       next: (data) => {
-        this.boards = data;
+        this.availableBoards = data;
       }
     })
   }
 
-  onSelectionBoard(board: BoardDto){
-    this.selectedBoard = board;
-  }
 }
