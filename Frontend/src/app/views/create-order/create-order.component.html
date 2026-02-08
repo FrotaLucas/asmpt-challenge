@@ -1,21 +1,24 @@
 <form [formGroup]="orderForm">
 
-<div>
+    <div>
 
-    <div class="title">
-        <h2> Create new Order </h2>
-        <button (click)="addNewBoard()" class="btn btn-light btn-outline-danger">Add new Board +</button>
+        <div class="title">
+            <h2> Create new Order </h2>
+            <button (click)="addNewBoard()" class="btn btn-light btn-outline-danger">Add new Board +</button>
+        </div>
+
+
+        <div class="box-of-boards">
+            <app-order-board *ngFor="let board of boardGroups; let i = index" [boardIndex]="i" [boardGroup]="board" />
+
+            <mat-form-field appearance="fill" class="full-width" appearance="outline">
+                <mat-label>Description</mat-label>
+                <input matInput />
+            </mat-form-field>
+
+            <button class="btn btn-light btn-outline-danger" (click)="sendOrder()">Send Order</button>
+        </div>
+
     </div>
-
-
-    <div class="box-of-boards">
-        <app-order-board *ngFor="let board of boardGroups; let i = index" 
-         [boardIndex]="i"
-         [boardGroup]="board"/>
-      
-        <button class="btn btn-light btn-outline-danger" (click)="sendOrder()">Send Order</button>
-    </div>
-
-</div>
 
 </form>

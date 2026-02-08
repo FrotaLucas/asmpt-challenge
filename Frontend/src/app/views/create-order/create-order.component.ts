@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 
 import { OrderBoardComponent } from '../../shared/components/order-board/order-board.component';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatInput } from "@angular/material/input";
 
 @Component({
   selector: 'app-create-order',
-  imports: [CommonModule, OrderBoardComponent, ReactiveFormsModule],
+  imports: [CommonModule, OrderBoardComponent, ReactiveFormsModule, MatFormField, MatLabel, MatInput],
   templateUrl: './create-order.component.html',
   styleUrl: './create-order.component.scss'
 })
