@@ -1,5 +1,3 @@
-using Backend.Domain.Entities;
-
 namespace Backend.Application.DTOs.Order
 {
     public class OrderResponseDto
