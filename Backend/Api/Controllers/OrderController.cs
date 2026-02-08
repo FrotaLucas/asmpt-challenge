@@ -1,3 +1,4 @@
+using Backend.Application.DTOs.Order;
 using Backend.Application.Responses;
 using Backend.Domain.Entities;
 using Backend.Domain.Interfaces;
@@ -48,7 +49,7 @@ namespace Backend.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ServiceResponse<Order>>> CreateOrder(Order order)
+        public async Task<ActionResult<ServiceResponse<OrderResponseDto>>> CreateOrder(OrderRequestDto order)
         {
             var result = await _orderService.CreateOrderAsync(order);
 

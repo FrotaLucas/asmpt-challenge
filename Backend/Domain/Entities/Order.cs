@@ -4,13 +4,13 @@ namespace Backend.Domain.Entities
     {
         public int Id { get; set; }
 
-        public String OrderNumber { get; set; } = string.Empty;
+        public string OrderNumber { get; set; } = string.Empty;
 
         public string Name { get; set; } = string.Empty;
 
         public string Description { get; set; } = string.Empty;
 
-        public DateTime OrderDate { get; set; }
+        public DateTime OrderDate { get; set; } = DateTime.Now;
 
         public List<OrderBoard> OrderBoards { get; set; } = new List<OrderBoard>();
     }

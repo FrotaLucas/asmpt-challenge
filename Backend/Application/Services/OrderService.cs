@@ -1,8 +1,10 @@
+using Backend.Application.DTOs.Order;
 using Backend.Application.Responses;
 using Backend.Domain.Entities;
 using Backend.Domain.Interfaces;
 using Backend.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
 
 namespace Backend.Application.Services
 {
@@ -12,23 +14,114 @@ namespace Backend.Application.Services
 
         private readonly ILogger<OrderService> _logger;
 
-        public OrderService(DataContext context, ILogger<OrderService> logger)
+        private readonly IMapper _mapper;
+        public OrderService(DataContext context, ILogger<OrderService> logger, IMapper mapper)
         {
             _context = context;
             _logger = logger;
+            _mapper = mapper;
         }
 
-        public async Task<ServiceResponse<Order>> CreateOrderAsync(Order order)
+        public async Task<ServiceResponse<OrderResponseDto>> CreateOrderAsync(OrderRequestDto request)
         {
-            await _context.Orders.AddAsync(order);
-            await _context.SaveChangesAsync();
-
-            return new ServiceResponse<Order>
+            var boards = request.OrderBoards;
+            if (boards.Count == 0)
             {
-                Data = order,
-                Success = true,
-                Message = "Order created successfully."
-            };
+                return new ServiceResponse<OrderResponseDto>
+                {
+                    Data = null,
+                    Success = false,
+                    Message = "Order does't have any board."
+                };
+            }
+
+            using var transaction = _context.Database.BeginTransaction();
+
+            try
+            {
+
+                Order newOrder = new Order();
+                newOrder.Name = GenerateOrderName();
+                newOrder.OrderNumber = GenerateOrderNumber();
+                newOrder.Description = request.Description;
+
+                await _context.Orders.AddAsync(newOrder);
+                await _context.SaveChangesAsync();
+
+                var orderBoards = request.OrderBoards
+                    .Select(board => new OrderBoard
+                    {
+                        OrderId = newOrder.Id,
+                        BoardId = board.Id
+                    }).ToList();
+
+                await _context.OrderBoards.AddRangeAsync(orderBoards);
+
+                var boardComponents = request.OrderBoards
+                    .SelectMany(board => board.BoardComponents,
+                    (board, component) =>
+                    new BoardComponent
+                    {
+                        BoardId = board.Id,
+                        ComponentId = component.Id
+                    }).ToList();
+
+                await _context.BoardComponents.AddRangeAsync(boardComponents);
+                await _context.SaveChangesAsync();
+
+                await transaction.CommitAsync();
+
+                var orderDto = _mapper.Map<OrderResponseDto>(newOrder);
+
+                return new ServiceResponse<OrderResponseDto>
+                {
+                    Data = orderDto,
+                    Success = true,
+                    Message = "order successfully created."
+                };
+            }
+
+            catch (DbUpdateException ex)
+            {
+                await transaction.RollbackAsync();
+                _logger.LogWarning("Database constraint violation. ");
+
+                return new ServiceResponse<OrderResponseDto>
+                {
+                    Success = false,
+                    Message = "Database constraint violation."
+                };
+            }
+
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+                _logger.LogWarning("Unexpected error: {msg}", ex);
+
+                return new ServiceResponse<OrderResponseDto>
+                {
+                    Success = false,
+                    Message = $"Unexpected error: {ex.Message}"
+                };
+            }
+        }
+
+        private string GenerateOrderNumber()
+        {
+            const string prefix = "ORD-SMT";
+
+            int randomSuffix = Random.Shared.Next(2000, 20000);
+
+            return $"{prefix}-{randomSuffix}";
+        }
+
+        private string GenerateOrderName()
+        {
+            const string prefix = "JOB";
+
+            int randomNumber = Random.Shared.Next(1000, 10000);
+
+            return $"{prefix}-{randomNumber}";
         }
 
         public async Task<ServiceResponse<List<Order>>> GetAllOrdersAsync()
