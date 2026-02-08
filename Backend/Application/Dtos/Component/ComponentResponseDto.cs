@@ -1,6 +1,6 @@
-namespace Backend.Application.DTOs.Order
+namespace Backend.Application.DTOs.Component
 {
-    public class BoardComponentRequestDto
+    public class ComponentResponseDto
     {
         public int Id { get; set; }
 

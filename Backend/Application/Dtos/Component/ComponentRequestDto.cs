@@ -1,9 +1,9 @@
-namespace Backend.Application.DTOs.Order
+namespace Backend.Application.DTOs.Component
 {
-    public class BoardComponentRequestDto
+    public class ComponentRequestDto
     {
-        public int Id { get; set; }
-
+        public int Id { get; set;}
+        
         public string Code { get; set; } = string.Empty;
 
         public string Name { get; set; } = string.Empty;

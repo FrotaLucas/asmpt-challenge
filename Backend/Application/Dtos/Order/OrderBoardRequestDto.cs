@@ -11,8 +11,6 @@ namespace Backend.Application.DTOs.Order
 
         public string Description { get; set; } = string.Empty;
 
-        public List<BoardComponentRequestDto> Components { get; set; } = new();
+        public List<BoardComponentRequestDto> BoardComponents { get; set; } = new List<BoardComponentRequestDto>();
     }
-
-
 }
