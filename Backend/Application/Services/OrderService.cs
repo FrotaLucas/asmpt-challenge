@@ -106,6 +106,70 @@ namespace Backend.Application.Services
             }
         }
 
+        public async Task<ServiceResponse<List<OrderResponseDto>>> GetAllOrdersAsync()
+        {
+            List<OrderResponseDto> ordersDto = new List<OrderResponseDto>();
+
+            ordersDto = await _context.Orders
+                .Select( order => new OrderResponseDto
+                {
+                    OrderNumber = order.OrderNumber,
+                    Name = order.Name,
+                    Description = order.Description,
+                    OrderDate = order.OrderDate,
+
+                    QuantityBoards = order.OrderBoards.Sum(ob => ob.Quantity),
+
+                    QuantityComponents = order.OrderBoards
+                        .SelectMany(ob => ob.Board.BoardComponents.Select(bc => bc.Quantity*ob.Quantity)).Sum()
+
+                }).ToListAsync();
+
+            if(ordersDto.Count == 0)
+            {
+                 _logger.LogWarning("No orders found in the database.");
+
+                return new ServiceResponse<List<OrderResponseDto>>
+                {
+                    Data = null,
+                    Success = false,
+                    Message = "No orders found."
+                };
+                
+            }
+      
+            return new ServiceResponse<List<OrderResponseDto>>
+            {
+                Data = ordersDto,
+                Success = true,
+            };
+        }
+
+        public async Task<ServiceResponse<OrderResponseDto>> GetOrderByIdAsync(int id)
+        {
+            Order? order = await _context.Orders.FindAsync(id);
+
+            if (order == null)
+            {
+                _logger.LogWarning($"Order with ID {id} not found.");
+
+                return new ServiceResponse<OrderResponseDto>
+                {
+                    Data = null,
+                    Success = false,
+                    Message = "Order not found."
+                };
+            }
+
+            var orderDto = _mapper.Map<OrderResponseDto>(order);
+
+            return new ServiceResponse<OrderResponseDto>
+            {
+                Data = orderDto,
+                Success = true,
+            };
+        }
+
         private string GenerateOrderNumber()
         {
             const string prefix = "ORD-SMT";
@@ -122,53 +186,6 @@ namespace Backend.Application.Services
             int randomNumber = Random.Shared.Next(1000, 10000);
 
             return $"{prefix}-{randomNumber}";
-        }
-
-        public async Task<ServiceResponse<List<Order>>> GetAllOrdersAsync()
-        {
-            List<Order> orders = await _context.Orders.ToListAsync();
-
-            if (orders == null || orders.Count == 0)
-            {
-                _logger.LogWarning("No orders found in the database.");
-
-                return new ServiceResponse<List<Order>>
-                {
-                    Data = null,
-                    Success = false,
-                    Message = "No orders found."
-                };
-
-            }
-
-            return new ServiceResponse<List<Order>>
-            {
-                Data = orders,
-                Success = true,
-            };
-        }
-
-        public async Task<ServiceResponse<Order>> GetOrderByIdAsync(int id)
-        {
-            Order? order = await _context.Orders.FindAsync(id);
-
-            if (order == null)
-            {
-                _logger.LogWarning($"Order with ID {id} not found.");
-
-                return new ServiceResponse<Order>
-                {
-                    Data = null,
-                    Success = false,
-                    Message = "Order not found."
-                };
-            }
-
-            return new ServiceResponse<Order>
-            {
-                Data = order,
-                Success = true,
-            };
         }
     }
 }

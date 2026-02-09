@@ -1,6 +1,5 @@
 using Backend.Application.DTOs.Order;
 using Backend.Application.Responses;
-using Backend.Domain.Entities;
 using Backend.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,7 +20,7 @@ namespace Backend.Api.Controllers
 
 
         [HttpGet]
-        public async Task<ActionResult<ServiceResponse<List<Order>>>> GetAllOrders()
+        public async Task<ActionResult<ServiceResponse<List<OrderResponseDto>>>> GetAllOrders()
         {
             var result = await _orderService.GetAllOrdersAsync();
 
@@ -35,7 +34,7 @@ namespace Backend.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ServiceResponse<Order>>> GetOrderById(int id)
+        public async Task<ActionResult<ServiceResponse<OrderResponseDto>>> GetOrderById(int id)
         {
             var result = await _orderService.GetOrderByIdAsync(id);
 

@@ -8,8 +8,8 @@ namespace Backend.Domain.Interfaces
     {
         Task<ServiceResponse<OrderResponseDto>> CreateOrderAsync(OrderRequestDto order);
         
-        Task<ServiceResponse<List<Order>>> GetAllOrdersAsync();
+        Task<ServiceResponse<List<OrderResponseDto>>> GetAllOrdersAsync();
 
-        Task<ServiceResponse<Order>> GetOrderByIdAsync(int id);
+        Task<ServiceResponse<OrderResponseDto>> GetOrderByIdAsync(int id);
     }
 }
