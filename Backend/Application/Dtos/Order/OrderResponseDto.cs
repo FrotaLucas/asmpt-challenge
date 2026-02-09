@@ -10,7 +10,11 @@ namespace Backend.Application.DTOs.Order
 
         public DateTime OrderDate { get; set; }
 
-        // public List<OrderBoard> OrderBoards { get; set; } = new List<OrderBoard>();
+        public int QuantityBoards { get; set;}
+
+        public int QuantityComponents {get; set; }
+
+        //public List<OrderBoard> OrderBoards { get; set; } = new List<OrderBoard>();
 
     }
 }
