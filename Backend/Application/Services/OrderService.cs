@@ -52,8 +52,9 @@ namespace Backend.Application.Services
                     .Select(board => new OrderBoard
                     {
                         OrderId = newOrder.Id,
-                        BoardId = board.Id
+                        BoardId = board.Id,
                     }).ToList();
+
 
                 await _context.OrderBoards.AddRangeAsync(orderBoards);
 
@@ -63,7 +64,7 @@ namespace Backend.Application.Services
                     new BoardComponent
                     {
                         BoardId = board.Id,
-                        ComponentId = component.Id
+                        ComponentId = component.Id,
                     }).ToList();
 
                 await _context.BoardComponents.AddRangeAsync(boardComponents);
@@ -118,16 +119,18 @@ namespace Backend.Application.Services
                     Description = order.Description,
                     OrderDate = order.OrderDate,
 
-                    QuantityBoards = order.OrderBoards.Sum(ob => ob.Quantity),
+                    QuantityBoards = order.OrderBoards.Count(),
 
                     QuantityComponents = order.OrderBoards
-                        .SelectMany(ob => ob.Board.BoardComponents.Select(bc => bc.Quantity*ob.Quantity)).Sum()
+                        .SelectMany(ob => ob.Board.BoardComponents)
+                        .Count()
 
-                }).ToListAsync();
+                })
+                .ToListAsync();
 
-            if(ordersDto.Count == 0)
+            if (ordersDto.Count == 0)
             {
-                 _logger.LogWarning("No orders found in the database.");
+                _logger.LogWarning("No orders found in the database.");
 
                 return new ServiceResponse<List<OrderResponseDto>>
                 {
@@ -135,9 +138,9 @@ namespace Backend.Application.Services
                     Success = false,
                     Message = "No orders found."
                 };
-                
+
             }
-      
+
             return new ServiceResponse<List<OrderResponseDto>>
             {
                 Data = ordersDto,
