@@ -19,13 +19,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-order-table',
   imports: [CommonModule, MatIconModule,
-    MatLabel, MatFormField, MatInput, MatTableModule,
+    MatLabel, MatFormField, MatInput, MatTableModule, MatCellDef, MatHeaderCellDef,
     MatPaginator, MatSortModule, RouterModule],
   templateUrl: './order-table.component.html',
   styleUrl: './order-table.component.scss'
 })
 
-export class OrderTableComponent implements OnInit {
+export class OrderTableComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = orderColumns;
 
@@ -34,12 +34,28 @@ export class OrderTableComponent implements OnInit {
   @ViewChild(MatPaginator) refMatPaginator!: MatPaginator;
 
 
-  constructor(private router: Router) {
-
+  constructor(private router: Router, private _orderService: OrderService) {
+    this.dataSource = new MatTableDataSource();
   }
 
   ngOnInit(): void {
+    this.refreshPage();
 
+  }
+
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.refMatPaginator;
+    this.dataSource.sort = this.refMatSort;
+  }
+
+  refreshPage(): void {
+    this._orderService.getOrders().subscribe({
+      next: (data) => {
+        this.dataSource.data = data
+      },
+
+      error: (err) => console.error("error on refreshing page", err)
+    })
   }
 
   applyFilter(event: Event) {
