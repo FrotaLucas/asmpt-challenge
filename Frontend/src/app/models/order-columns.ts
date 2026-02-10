@@ -1,10 +1,10 @@
 const orderColumns: string[] = [
-    'order',
+    'orderNumber',
     'name',
-    'board',
-    'component',
     'description',
-    'Date',
+    'orderDate',
+    'quantityBoards',
+    'quantityComponents',
 ];
 
 

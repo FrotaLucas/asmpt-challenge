@@ -1,8 +1,8 @@
 export interface OrderDto {
-    id: number,
-    code: string,
-    OrderNumber: string,
-    Name: string,
-    Description: string,
-    Date: Date
+    orderNumber: string;
+    name: string;
+    description: string;
+    orderDate: string; // string from Backend
+    quantityBoards: number;
+    quantityComponents: number;
 }
