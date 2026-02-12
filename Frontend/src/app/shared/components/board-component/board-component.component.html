@@ -3,7 +3,7 @@
     <mat-label>Component: </mat-label>
     <mat-form-field class="input input-component" appearance="outline">
 
-        <mat-select [(value)]="selectedComponent" placeholder="select a component" formControlName="component">
+        <mat-select placeholder="select a component" formControlName="component">
             <mat-option *ngFor="let item of availableComponents", [value]="item">
                 {{item.code}}
             </mat-option>

@@ -7,7 +7,7 @@
        
             <mat-label>Board: </mat-label>
             <mat-form-field class="input" appearance="outline">
-                <mat-select [(value)]="selectedBoard" placeholder="select a board" formControlName="board">
+                <mat-select formControlName="board" placeholder="select a board" (selectionChange)="onSelectionBoard()">
                     <mat-option *ngFor="let item of availableBoards" [value]="item">
                         {{item.code}}
                     </mat-option>

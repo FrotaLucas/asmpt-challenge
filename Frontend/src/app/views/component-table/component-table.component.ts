@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { ComponentService } from '../../services/component.service';
 import { ComponentDto } from '../../models/component';
-import { componentColumns } from '../../models/component-column';
+import { componentColumns } from '../../shared/layout/columns/component-column';
 
 import { CommonModule } from '@angular/common';
 
