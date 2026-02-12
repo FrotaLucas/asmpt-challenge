@@ -11,9 +11,6 @@ namespace Backend.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<OrderBoard>().HasKey(orderBoard => new { orderBoard.OrderId, orderBoard.BoardId });
-            modelBuilder.Entity<BoardComponent>().HasKey(borderComponent => new { borderComponent.BoardId, borderComponent.ComponentId });
-        
             modelBuilder.Entity<Component>()
                 .HasData(
                     new Component { Id = 1, Code = "R01", Name = "Resistor", Description = "Resistor 0402" }

@@ -14,6 +14,6 @@ namespace Backend.Application.DTOs.Order
 
         public DateTime OrderDate { get; set; } = DateTime.Now;
         //1
-        public List<OrderBoardRequestDto> OrderBoards { get; set; } = new List<OrderBoardRequestDto>();
+        public List<OrderBoardRequestDto> Boards { get; set; } = new List<OrderBoardRequestDto>();
     }
 }

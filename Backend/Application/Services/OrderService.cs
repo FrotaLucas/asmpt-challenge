@@ -24,7 +24,7 @@ namespace Backend.Application.Services
 
         public async Task<ServiceResponse<OrderResponseDto>> CreateOrderAsync(OrderRequestDto request)
         {
-            var boards = request.OrderBoards;
+            var boards = request.Boards;
             if (boards.Count == 0)
             {
                 return new ServiceResponse<OrderResponseDto>
@@ -48,7 +48,7 @@ namespace Backend.Application.Services
                 await _context.Orders.AddAsync(newOrder);
                 await _context.SaveChangesAsync();
 
-                var orderBoards = request.OrderBoards
+                var orderBoards = request.Boards
                     .Select(board => new OrderBoard
                     {
                         OrderId = newOrder.Id,
@@ -58,8 +58,8 @@ namespace Backend.Application.Services
 
                 await _context.OrderBoards.AddRangeAsync(orderBoards);
 
-                var boardComponents = request.OrderBoards
-                    .SelectMany(board => board.BoardComponents,
+                var boardComponents = request.Boards
+                    .SelectMany(board => board.Components,
                     (board, component) =>
                     new BoardComponent
                     {
