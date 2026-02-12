@@ -66,6 +66,7 @@ namespace Backend.Application.Services
                     {
                         BoardId = board.Id,
                         ComponentId = component.Id,
+                        OrderId = newOrder.Id,
                         BoardPosition = component.BoardPosition
                     }).ToList();
 
@@ -87,7 +88,7 @@ namespace Backend.Application.Services
             catch (DbUpdateException ex)
             {
                 await transaction.RollbackAsync();
-                _logger.LogWarning("Database constraint violation. ");
+                _logger.LogWarning("Database constraint violation. {Message}", ex);
 
                 return new ServiceResponse<OrderResponseDto>
                 {
@@ -99,7 +100,7 @@ namespace Backend.Application.Services
             catch (Exception ex)
             {
                 await transaction.RollbackAsync();
-                _logger.LogWarning("Unexpected error: {msg}", ex);
+                _logger.LogWarning("Unexpected error: {Message}", ex);
 
                 return new ServiceResponse<OrderResponseDto>
                 {

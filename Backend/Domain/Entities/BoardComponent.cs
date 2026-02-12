@@ -4,6 +4,10 @@ namespace Backend.Domain.Entities
     {
         public int Id { get; set; }
 
+        public int OrderId { get; set; }
+
+        public int BoardPosition { get; set; }
+
         public int BoardId { get; set; }
 
         public Board Board { get; set; } = default!;
@@ -12,6 +16,5 @@ namespace Backend.Domain.Entities
 
         public Component Component { get; set; } = default!;
 
-        public int BoardPosition { get; set; }
     }
 }
