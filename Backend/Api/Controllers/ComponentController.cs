@@ -3,6 +3,7 @@ using Backend.Application.Responses;
 using Backend.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Backend.Domain.Entities;
+using Backend.Application.DTOs.Component;
 
 namespace Backend.Api.Controllers
 {
@@ -21,7 +22,7 @@ namespace Backend.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<ServiceResponse<List<Component>>>> GetAllComponents()
+        public async Task<ActionResult<ServiceResponse<List<ComponentResponseDto>>>> GetAllComponents()
         {
             var result = await _componentService.GetAllComponentsAsync();
 
@@ -35,7 +36,7 @@ namespace Backend.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ServiceResponse<Component>>> GetComponent(int id)
+        public async Task<ActionResult<ServiceResponse<ComponentResponseDto>>> GetComponent(int id)
         {
             var result = await _componentService.GetComponentByIdAsync(id);
 
@@ -49,7 +50,7 @@ namespace Backend.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ServiceResponse<Component>>> CreateComponent(Component component)
+        public async Task<ActionResult<ServiceResponse<ComponentResponseDto>>> CreateComponent(ComponentRequestDto component)
         {
             var result = await _componentService.CreateComponentAsync(component);
 
@@ -78,7 +79,7 @@ namespace Backend.Api.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult<ServiceResponse<Component>>> UpdateComponent(Component component)
+        public async Task<ActionResult<ServiceResponse<ComponentResponseDto>>> UpdateComponent(ComponentRequestDto component)
         {
             var result = await _componentService.UpdateComponentAsync(component);
 

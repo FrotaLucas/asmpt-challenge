@@ -3,6 +3,8 @@ using Backend.Domain.Interfaces;
 using Backend.Application.Responses;
 using Backend.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Backend.Application.DTOs.Component;
+using AutoMapper;
 
 namespace Backend.Application.Services
 {
@@ -12,31 +14,36 @@ namespace Backend.Application.Services
 
         private readonly ILogger<ComponentService> _logger;
 
-        public ComponentService(DataContext context, ILogger<ComponentService> logger)
+        private readonly IMapper _mapper;
+        public ComponentService(DataContext context, ILogger<ComponentService> logger, IMapper mapper)
         {
             _context = context;
             _logger = logger;
+            _mapper = mapper;
         }
 
-        public async Task<ServiceResponse<Component>> CreateComponentAsync(Component component)
+        public async Task<ServiceResponse<ComponentResponseDto>> CreateComponentAsync(ComponentRequestDto componentDto)
         {
-            var response = new ServiceResponse<Component>();
-      
+            var response = new ServiceResponse<ComponentResponseDto>();
+
+            var component = _mapper.Map<Component>(componentDto);
             await _context.Components.AddAsync(component);
             await _context.SaveChangesAsync();
-            response.Data = component;
+            
+            var componentResponse = _mapper.Map<ComponentResponseDto>(component);
+            response.Data = componentResponse;
             response.Success = true;    
 
             return response;
         }
 
-        public async Task<ServiceResponse<List<Component>>> GetAllComponentsAsync()
+        public async Task<ServiceResponse<List<ComponentResponseDto>>> GetAllComponentsAsync()
         {
             List<Component> components = await _context.Components.ToListAsync();
 
             if(components == null || components.Count == 0)
             {
-                var response = new ServiceResponse<List<Component>>()
+                var response = new ServiceResponse<List<ComponentResponseDto>>()
                 {
                     Data = null,
                     Success = false,
@@ -47,20 +54,20 @@ namespace Backend.Application.Services
                 return response;
             }
 
-            return new ServiceResponse<List<Component>>()
+            return new ServiceResponse<List<ComponentResponseDto>>()
             {
-                Data = components,
+                Data = _mapper.Map<List<ComponentResponseDto>>(components),
                 Success = true
             };
         }
 
-        public async Task<ServiceResponse<Component>> GetComponentByIdAsync(int id)
+        public async Task<ServiceResponse<ComponentResponseDto>> GetComponentByIdAsync(int id)
         {
             Component? component = await _context.Components.FindAsync(id);
 
             if(component == null)
             {
-                var response = new ServiceResponse<Component>()
+                var response = new ServiceResponse<ComponentResponseDto>()
                 {
                     Data = null,
                     Success = false,
@@ -71,9 +78,9 @@ namespace Backend.Application.Services
                 return response;
             }
 
-            return new ServiceResponse<Component>()
+            return new ServiceResponse<ComponentResponseDto>()
             {
-                Data = component,
+                Data = _mapper.Map<ComponentResponseDto>(component),
                 Success = true
             };
         }
@@ -104,33 +111,33 @@ namespace Backend.Application.Services
             };
         }
 
-        public async Task<ServiceResponse<Component>> UpdateComponentAsync(Component component)
+        public async Task<ServiceResponse<ComponentResponseDto>> UpdateComponentAsync(ComponentRequestDto componentDto)
         {
-            Component? existingComponent = await _context.Components.FindAsync(component.Id);
+            Component? existingComponent = await _context.Components.FindAsync(componentDto.Id);
 
             if(existingComponent == null)
             {
-                var response = new ServiceResponse<Component>()
+                var response = new ServiceResponse<ComponentResponseDto>()
                 {
                     Data = null,
                     Success = false,
-                    Message = $"Component with ID {component.Id} not found."
+                    Message = $"Component with ID {componentDto.Id} not found."
                 };
                 
-                _logger.LogWarning("Component with ID {ComponentId} not found.", component.Id);
+                _logger.LogWarning("Component with ID {ComponentId} not found.", componentDto.Id);
                 return response;
             }
 
-            existingComponent.Code = component.Code;
-            existingComponent.Name = component.Name;
-            existingComponent.Description = component.Description;
+            existingComponent.Code = componentDto.Code;
+            existingComponent.Name = componentDto.Name;
+            existingComponent.Description = componentDto.Description;
 
             _context.Components.Update(existingComponent);
             await _context.SaveChangesAsync();
 
-            return new ServiceResponse<Component>()
+            return new ServiceResponse<ComponentResponseDto>()
             {
-                Data = existingComponent,
+                Data = _mapper.Map<ComponentResponseDto>(existingComponent),
                 Success = true
             };
         }
