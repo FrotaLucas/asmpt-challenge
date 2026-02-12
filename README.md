@@ -27,8 +27,6 @@ The application follows a **layered architecture**, ensuring clear separation of
 
 ### Backend
 
-**Tech Stack**
-
 - **Framework:** ASP.NET Core Web API  
 - **Database:** SQL Server  
 - **ORM:** Entity Framework Core (Code-First approach)  
@@ -57,7 +55,6 @@ dotnet run
 
 
 ### Frontend
-**Tech Stack**
 
 - **Angular 19**
 - **Angular Material**
@@ -75,7 +72,11 @@ ng serve
 The application will be available at:
 
 http://localhost:4200
-Database
-SQL Server
+
+### Database
+- **SQL Server**
+- **Entity Framework Core**
+- **Code-First approach**
+- **Migrations enabled**
 
 
