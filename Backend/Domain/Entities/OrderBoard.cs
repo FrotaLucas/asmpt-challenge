@@ -12,8 +12,6 @@ namespace Backend.Domain.Entities
 
         public Board Board { get; set; } = default!;
 
-        public string OrderNumber { get; set; } = string.Empty;
-
         public int BoardPosition { get; set; }
     }
 }

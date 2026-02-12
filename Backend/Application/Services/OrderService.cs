@@ -53,6 +53,7 @@ namespace Backend.Application.Services
                     {
                         OrderId = newOrder.Id,
                         BoardId = board.Id,
+                        BoardPosition = board.BoardPosition
                     }).ToList();
 
 
@@ -65,6 +66,7 @@ namespace Backend.Application.Services
                     {
                         BoardId = board.Id,
                         ComponentId = component.Id,
+                        BoardPosition = component.BoardPosition
                     }).ToList();
 
                 await _context.BoardComponents.AddRangeAsync(boardComponents);

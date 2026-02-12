@@ -9,5 +9,7 @@ namespace Backend.Application.DTOs.Order
         public string Name { get; set; } = string.Empty;
 
         public string Description { get; set; } = string.Empty;
+
+        public int BoardPosition { get; set; }
     }
 }
