@@ -62,22 +62,21 @@ export class CreateOrderComponent {
       name: '',
       description: formValue.description,
       orderDate: new Date().toISOString(),
-      // quantityBoards: 0,
-      // quantityComponents: 0,
-      boards: formValue.boards.map((b: any) => ({
+      boards: formValue.boards.map((b: any, index: number) => ({
         id: b.board.id,
+        boardPosition: index + 1,
         components: b.components
-          .filter((c: any) => c.component)
           .map((c: any) => ({
-            id: c.component.id
+            id: c.component.id,
+            boardPosition: index + 1
           }))
       }))
     };
 
-    this._orderService.createOrder(order).subscribe((data) => {
-      console.log('calling order post', order);
+    this.orderForm.reset();
+    console.log('calling order post', order);
 
-    })
+    this._orderService.createOrder(order).subscribe();
 
   }
 
