@@ -44,6 +44,7 @@ namespace Backend.Application.Services
                 newOrder.Name = GenerateOrderName();
                 newOrder.OrderNumber = GenerateOrderNumber();
                 newOrder.Description = request.Description;
+                newOrder.OrderDate = request.OrderDate;
 
                 await _context.Orders.AddAsync(newOrder);
                 await _context.SaveChangesAsync();
