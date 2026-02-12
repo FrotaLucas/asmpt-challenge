@@ -12,6 +12,7 @@ export const routes: Routes = [
         children: [
             {
                 path: 'components',
+                redirectTo: 'components',
                 component: ComponentTableComponent
             },
             {
