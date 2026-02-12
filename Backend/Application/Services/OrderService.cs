@@ -115,7 +115,7 @@ namespace Backend.Application.Services
             List<OrderResponseDto> ordersDto = new List<OrderResponseDto>();
 
             ordersDto = await _context.Orders
-                .Select( order => new OrderResponseDto
+                .Select(order => new OrderResponseDto
                 {
                     OrderNumber = order.OrderNumber,
                     Name = order.Name,
@@ -126,7 +126,8 @@ namespace Backend.Application.Services
 
                     QuantityComponents = order.OrderBoards
                         .SelectMany(ob => ob.Board.BoardComponents)
-                        .Count()
+                        .Where(bc => bc.OrderId == order.Id)
+                    .Count()
 
                 })
                 .ToListAsync();
