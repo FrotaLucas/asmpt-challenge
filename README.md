@@ -52,38 +52,24 @@ This structure promotes:
 
 ### Running the Backend
 
-```bash
 dotnet restore
 dotnet run
 
 
 ### Frontend
-Tech Stack
+**Tech Stack**
 
-Angular 19
+- **Angular 19**
+- **Angular Material**
+- **RxJS**
+- **TypeScript**
+- **Key Features**
+- **Responsive UI built with Angular Material**
+- **Reactive Forms**
 
-Angular Material
 
-RxJS
-
-TypeScript
-
-Key Features
-
-Responsive UI built with Angular Material
-
-Reactive Forms
-
-Modular architecture
-
-Reusable shared components
-
-Clean routing structure
-
-Proper separation of concerns
-
-Running the Frontend
-cd smt-order-management
+### Running the Frontend
+cd Frontend
 npm install
 ng serve
 The application will be available at:
@@ -92,8 +78,4 @@ http://localhost:4200
 Database
 SQL Server
 
-Entity Framework Core
 
-Code-First approach
-
-Migrations enabled
