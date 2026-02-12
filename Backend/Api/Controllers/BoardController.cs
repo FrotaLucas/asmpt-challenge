@@ -4,6 +4,7 @@ namespace Backend.Api.Controllers
     using Microsoft.AspNetCore.Mvc; 
     using Backend.Domain.Interfaces;
     using Backend.Application.Responses;
+    using Backend.Application.DTOs.Board;
 
     [ApiController]
     [Route("api/boards")]
@@ -20,7 +21,7 @@ namespace Backend.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<ServiceResponse<List<Board>>>> GetAllBoards()
+        public async Task<ActionResult<ServiceResponse<List<BoardResponsetDto>>>> GetAllBoards()
         {
             var result = await _boardService.GetAllBoardsAsync();
             if (!result.Success)
@@ -46,7 +47,7 @@ namespace Backend.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ServiceResponse<Board>>> CreateBoard(Board board)
+        public async Task<ActionResult<ServiceResponse<BoardResponsetDto>>> CreateBoard(BoardRequestDto board)
         {
             var result = await _boardService.CreateBoardAsync(board);
             if (!result.Success)
@@ -72,7 +73,7 @@ namespace Backend.Api.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult<ServiceResponse<Board>>> UpdateBoard(Board board)
+        public async Task<ActionResult<ServiceResponse<BoardResponsetDto>>> UpdateBoard(BoardRequestDto board)
         {
             var result = await _boardService.UpdateBoardAsync(board);
 

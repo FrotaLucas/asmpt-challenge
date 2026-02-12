@@ -3,6 +3,8 @@ using Backend.Domain.Entities;
 using Backend.Domain.Interfaces;
 using Backend.Application.Responses;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
+using Backend.Application.DTOs.Board;
 
 namespace Backend.Application.Services
 {
@@ -12,19 +14,22 @@ namespace Backend.Application.Services
 
         private readonly ILogger<BoardService> _logger;
 
-        public BoardService(DataContext context, ILogger<BoardService> logger)
+        private readonly IMapper _mapper;
+
+        public BoardService(DataContext context, ILogger<BoardService> logger, IMapper mapper)
         {
             _context = context;
             _logger = logger;
+            _mapper = mapper;
         }
 
-        public async Task<ServiceResponse<List<Board>>> GetAllBoardsAsync()
+        public async Task<ServiceResponse<List<BoardResponsetDto>>> GetAllBoardsAsync()
         {
             List<Board> boards = await _context.Boards.ToListAsync();
 
             if(boards == null || boards.Count == 0)
             {
-                var response = new ServiceResponse<List<Board>>()
+                var response = new ServiceResponse<List<BoardResponsetDto>>()
                 {
                     Data = null,
                     Success = false,
@@ -35,20 +40,20 @@ namespace Backend.Application.Services
                 return response;
             }
 
-            return new ServiceResponse<List<Board>>()
+            return new ServiceResponse<List<BoardResponsetDto>>()
             {
-                Data = boards,
+                Data = _mapper.Map<List<BoardResponsetDto>>(boards),
                 Success = true
             };
         }
 
-        public async Task<ServiceResponse<Board>> GetBoardByIdAsync(int id)
+        public async Task<ServiceResponse<BoardResponsetDto>> GetBoardByIdAsync(int id)
         {
             Board? board = await _context.Boards.FindAsync(id);
 
             if(board == null)
             {
-                var response = new ServiceResponse<Board>()
+                var response = new ServiceResponse<BoardResponsetDto>()
                 {
                     Data = null,
                     Success = false,
@@ -58,21 +63,22 @@ namespace Backend.Application.Services
                 return response;
             }
 
-            return new ServiceResponse<Board>()
+            return new ServiceResponse<BoardResponsetDto>()
             {
-                Data = board,
+                Data = _mapper.Map<BoardResponsetDto>(board),
                 Success = true
             };
         }
 
-        public async Task<ServiceResponse<Board>> CreateBoardAsync(Board board)
+        public async Task<ServiceResponse<BoardResponsetDto>> CreateBoardAsync(BoardRequestDto boardDto)
         {
-            await _context.Boards.AddAsync(board);
+            var board = _mapper.Map<Board>(boardDto);
+            var responseBoard = await _context.Boards.AddAsync(board);
             await _context.SaveChangesAsync();
 
-            return new ServiceResponse<Board>()
+            return new ServiceResponse<BoardResponsetDto>()
             {
-                Data = board,
+                Data = _mapper.Map<BoardResponsetDto>(board),
                 Success = true
             };
         }
@@ -103,13 +109,13 @@ namespace Backend.Application.Services
             };
         }
 
-        public async Task<ServiceResponse<Board>> UpdateBoardAsync(Board board)
+        public async Task<ServiceResponse<BoardResponsetDto>> UpdateBoardAsync(BoardRequestDto board)
         {
             Board? existingBoard = await _context.Boards.FindAsync(board.Id);
 
             if(existingBoard == null)
             {
-                var response = new ServiceResponse<Board>()
+                var response = new ServiceResponse<BoardResponsetDto>()
                 {
                     Data = null,
                     Success = false,
@@ -129,9 +135,9 @@ namespace Backend.Application.Services
             _context.Boards.Update(existingBoard);
             await _context.SaveChangesAsync();
 
-            return new ServiceResponse<Board>()
+            return new ServiceResponse<BoardResponsetDto>()
             {
-                Data = existingBoard,
+                Data = _mapper.Map<BoardResponsetDto>(existingBoard),
                 Success = true
             };
         }
