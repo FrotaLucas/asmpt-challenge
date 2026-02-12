@@ -11,8 +11,12 @@ export const routes: Routes = [
         component: BaseViewComponent,
         children: [
             {
-                path: 'components',
+                path: '',
                 redirectTo: 'components',
+                pathMatch: 'full'
+            },
+            {
+                path: 'components',
                 component: ComponentTableComponent
             },
             {
@@ -23,7 +27,8 @@ export const routes: Routes = [
                 path: 'orders',
                 component: OrderTableComponent
             },
-            {   path:'orders/new',
+            {
+                path: 'orders/new',
                 component: CreateOrderComponent
             }]
     }
