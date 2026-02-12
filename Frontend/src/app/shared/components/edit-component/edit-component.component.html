@@ -1,34 +1,36 @@
-<h2>
-  <ng-container>
-    Add Component
-  </ng-container>
+<div class="box">
 
-</h2>
+  <h2>
+    <ng-container>
+      Edit Component
+    </ng-container>
+
+  </h2>
 
 
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="component-form">
 
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Code</mat-label>
+      <input matInput formControlName="code" />
+    </mat-form-field>
 
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="customer-form">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
 
-  <mat-form-field appearance="fill" class="full-width">
-    <mat-label>Code</mat-label>
-    <input matInput formControlName="code" />
-  </mat-form-field>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="description" />
+    </mat-form-field>
 
-  <mat-form-field appearance="fill" class="full-width">
-    <mat-label>Name</mat-label>
-    <input matInput formControlName="name" />
-  </mat-form-field>
+    <div style="margin-top: 20px;">
+      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+        Save
+      </button>
+    </div>
 
-   <mat-form-field appearance="fill" class="full-width">
-    <mat-label>Description</mat-label>
-    <input matInput formControlName="description" />
-  </mat-form-field>
+  </form>
 
-  <div style="margin-top: 20px;">
-    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
-      Save
-    </button>
-  </div>
-
-</form>
+</div>

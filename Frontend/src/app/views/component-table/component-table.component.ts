@@ -75,7 +75,7 @@ export class ComponentTableComponent implements OnInit, AfterViewInit {
 
   editComponent(component: ComponentDto): void {
     const dialogRef = this.dialog.open(EditComponentComponent, {
-      width: '600px',
+      width: '400px',
       data: component
     })
 

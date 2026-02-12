@@ -90,7 +90,7 @@ export class BoardTableComponent implements OnInit, AfterViewInit {
 
   editBoard(board: BoardDto) {
     const dialogRef = this.dialog.open(EditBoardComponent, {
-      width: '600px',
+      width: '400px',
       data: board
     })
 
