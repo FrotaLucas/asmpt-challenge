@@ -46,7 +46,12 @@ This structure promotes:
 - Maintainability  
 - Testability  
 - Scalability  
-- Clean separation of responsibilities  
+- Clean separation of responsibilities
+
+### UML Diagram
+
+<img width="1335" height="641" alt="image" src="https://github.com/user-attachments/assets/291acb54-204d-48e4-b985-fa9e716df235" />
+
 
 ### Running the Backend
 
