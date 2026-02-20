@@ -50,7 +50,7 @@ This structure promotes:
 
 ### UML Diagram
 
-<img width="1335" height="641" alt="image" src="https://github.com/user-attachments/assets/291acb54-204d-48e4-b985-fa9e716df235" />
+<img width="1408" height="625" alt="image" src="https://github.com/user-attachments/assets/738f6dd6-d6f3-458d-a2ac-afc6da226ad7" />
 
 
 ### Running the Backend
