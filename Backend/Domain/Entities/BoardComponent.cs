@@ -6,6 +6,8 @@ namespace Backend.Domain.Entities
 
         public int OrderId { get; set; }
 
+        public Order Order { get; set; } = default!;
+
         public int BoardPosition { get; set; }
 
         public int BoardId { get; set; }
