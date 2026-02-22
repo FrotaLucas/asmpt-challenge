@@ -35,80 +35,83 @@ namespace Backend.Application.Services
                 };
             }
 
-            using var transaction = _context.Database.BeginTransaction();
-
-            try
+            using (var transaction = _context.Database.BeginTransaction())
             {
+                try
+                {
 
-                Order newOrder = new Order();
-                newOrder.Name = GenerateOrderName();
-                newOrder.OrderNumber = GenerateOrderNumber();
-                newOrder.Description = request.Description;
-                newOrder.OrderDate = request.OrderDate;
+                    Order newOrder = new Order();
+                    newOrder.Name = GenerateOrderName();
+                    newOrder.OrderNumber = GenerateOrderNumber();
+                    newOrder.Description = request.Description;
+                    newOrder.OrderDate = request.OrderDate;
 
-                await _context.Orders.AddAsync(newOrder);
-                await _context.SaveChangesAsync();
+                    await _context.Orders.AddAsync(newOrder);
+                    await _context.SaveChangesAsync();
 
-                var orderBoards = request.Boards
-                    .Select(board => new OrderBoard
+                    var orderBoards = request.Boards
+                        .Select(board => new OrderBoard
+                        {
+                            OrderId = newOrder.Id,
+                            BoardId = board.Id,
+                            BoardPosition = board.BoardPosition
+                        }).ToList();
+
+
+                    await _context.OrderBoards.AddRangeAsync(orderBoards);
+
+                    var boardComponents = request.Boards
+                        .SelectMany(board => board.Components,
+                        (board, component) =>
+                        new BoardComponent
+                        {
+                            BoardId = board.Id,
+                            ComponentId = component.Id,
+                            OrderId = newOrder.Id,
+                            BoardPosition = component.BoardPosition
+                        }).ToList();
+
+                    await _context.BoardComponents.AddRangeAsync(boardComponents);
+                    await _context.SaveChangesAsync();
+
+                    await transaction.CommitAsync();
+
+                    var orderDto = _mapper.Map<OrderResponseDto>(newOrder);
+
+                    return new ServiceResponse<OrderResponseDto>
                     {
-                        OrderId = newOrder.Id,
-                        BoardId = board.Id,
-                        BoardPosition = board.BoardPosition
-                    }).ToList();
+                        Data = orderDto,
+                        Success = true,
+                        Message = "order successfully created."
+                    };
+                }
 
+                catch (DbUpdateException ex)
+                {
+                    await transaction.RollbackAsync();
+                    _logger.LogWarning("Database constraint violation. {Message}", ex);
 
-                await _context.OrderBoards.AddRangeAsync(orderBoards);
-
-                var boardComponents = request.Boards
-                    .SelectMany(board => board.Components,
-                    (board, component) =>
-                    new BoardComponent
+                    return new ServiceResponse<OrderResponseDto>
                     {
-                        BoardId = board.Id,
-                        ComponentId = component.Id,
-                        OrderId = newOrder.Id,
-                        BoardPosition = component.BoardPosition
-                    }).ToList();
+                        Success = false,
+                        Message = "Database constraint violation."
+                    };
+                }
 
-                await _context.BoardComponents.AddRangeAsync(boardComponents);
-                await _context.SaveChangesAsync();
-
-                await transaction.CommitAsync();
-
-                var orderDto = _mapper.Map<OrderResponseDto>(newOrder);
-
-                return new ServiceResponse<OrderResponseDto>
+                catch (Exception ex)
                 {
-                    Data = orderDto,
-                    Success = true,
-                    Message = "order successfully created."
-                };
+                    await transaction.RollbackAsync();
+                    _logger.LogWarning("Unexpected error: {Message}", ex);
+
+                    return new ServiceResponse<OrderResponseDto>
+                    {
+                        Success = false,
+                        Message = $"Unexpected error: {ex.Message}"
+                    };
+                }
             }
 
-            catch (DbUpdateException ex)
-            {
-                await transaction.RollbackAsync();
-                _logger.LogWarning("Database constraint violation. {Message}", ex);
 
-                return new ServiceResponse<OrderResponseDto>
-                {
-                    Success = false,
-                    Message = "Database constraint violation."
-                };
-            }
-
-            catch (Exception ex)
-            {
-                await transaction.RollbackAsync();
-                _logger.LogWarning("Unexpected error: {Message}", ex);
-
-                return new ServiceResponse<OrderResponseDto>
-                {
-                    Success = false,
-                    Message = $"Unexpected error: {ex.Message}"
-                };
-            }
         }
 
         public async Task<ServiceResponse<List<OrderResponseDto>>> GetAllOrdersAsync()
