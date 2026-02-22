@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { BoardService } from '../../services/board.service';
 import { BoardDto } from '../../models/board';
-import { boardColumns } from '../../shared/layout/columns/board-column';
+import { boardColumns } from '../../models/columns/board-column';
 
 import { CommonModule } from '@angular/common';
 

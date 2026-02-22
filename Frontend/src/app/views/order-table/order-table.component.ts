@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { OrderService } from '../../services/order.service';
 import { OrderDto } from '../../models/order';
-import { orderColumns } from '../../shared/layout/columns/order-columns';
+import { orderColumns } from '../../models/columns/order-columns';
 import { CommonModule } from '@angular/common';
 
 import { Router, RouterModule } from '@angular/router';
