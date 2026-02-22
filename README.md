@@ -55,8 +55,8 @@ This structure promotes:
 
 ### Running the Backend
 
-dotnet restore
-dotnet run
+- dotnet restore
+- dotnet run
 
 
 ### Frontend
@@ -71,10 +71,10 @@ dotnet run
 
 
 ### Running the Frontend
-cd Frontend
-npm install
-ng serve
-The application will be available at:
+- cd Frontend
+- npm install
+- ng serve
+* The application will be available at:
 
 http://localhost:4200
 
