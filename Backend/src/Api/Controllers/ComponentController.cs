@@ -1,11 +1,11 @@
 
-using Backend.Application.Responses;
-using Backend.Domain.Interfaces;
+using Asmpt.Application.Responses;
+using Asmpt.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Backend.Domain.Entities;
-using Backend.Application.DTOs.Component;
+using Asmpt.Domain.Entities;
+using Asmpt.Application.DTOs.Component;
 
-namespace Backend.Api.Controllers
+namespace Asmpt.Api.Controllers
 {
     [ApiController]
     [Route("api/components")]

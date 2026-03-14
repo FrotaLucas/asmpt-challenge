@@ -1,4 +1,4 @@
-namespace Backend.Domain.Entities
+namespace Asmpt.Domain.Entities
 {
     public class Board
     {

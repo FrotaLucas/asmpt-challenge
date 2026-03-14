@@ -1,14 +1,10 @@
-﻿using Xunit;
-using Microsoft.EntityFrameworkCore;
-using Backend.Infrastructure.Data;
-using Backend.Application.Services;
-using Backend.Domain.Entities;
-using Backend.Application.DTOs.Component;
-using Backend.Application.Responses;
-using Microsoft.Extensions.Logging.Abstractions;
+﻿using Asmpt.Application.DTOs.Component;
+using Asmpt.Application.Services;
+using Asmpt.Domain.Entities;
+using Asmpt.Infrastructure.Data;
 using AutoMapper;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging.Abstractions;
 
 public class ComponentServiceTests
 {

@@ -1,4 +1,4 @@
-namespace Backend.Application.Responses
+namespace Asmpt.Application.Responses
 {
     public class ServiceResponse<T>
     {

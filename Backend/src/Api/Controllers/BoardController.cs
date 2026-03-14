@@ -1,10 +1,10 @@
-namespace Backend.Api.Controllers
+namespace Asmpt.Api.Controllers
 {
-    using Backend.Domain.Entities;
+    using Asmpt.Domain.Entities;
     using Microsoft.AspNetCore.Mvc; 
-    using Backend.Domain.Interfaces;
-    using Backend.Application.Responses;
-    using Backend.Application.DTOs.Board;
+    using Asmpt.Domain.Interfaces;
+    using Asmpt.Application.Responses;
+    using Asmpt.Application.DTOs.Board;
 
     [ApiController]
     [Route("api/boards")]

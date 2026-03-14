@@ -1,4 +1,4 @@
-namespace Backend.Application.DTOs.Component
+namespace Asmpt.Application.DTOs.Component
 {
     public class ComponentResponseDto
     {

@@ -1,7 +1,7 @@
-using Backend.Domain.Entities;
+using Asmpt.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Backend.Infrastructure.Data
+namespace Asmpt.Infrastructure.Data
 {
     public class DataContext : DbContext
     {

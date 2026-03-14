@@ -1,8 +1,8 @@
 using AutoMapper;
-using Backend.Application.DTOs.Board;
-using Backend.Domain.Entities;
+using Asmpt.Application.DTOs.Board;
+using Asmpt.Domain.Entities;
 
-namespace Backend.Application.Mapping
+namespace Asmpt.Application.Mapping
 {
     public class BoardMapping : Profile
     {

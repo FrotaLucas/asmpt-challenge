@@ -1,8 +1,8 @@
-using Backend.Application.DTOs.Component;
-using Backend.Application.Responses;
-using Backend.Domain.Entities;
+using Asmpt.Application.DTOs.Component;
+using Asmpt.Application.Responses;
+using Asmpt.Domain.Entities;
 
-namespace Backend.Domain.Interfaces
+namespace Asmpt.Domain.Interfaces
 {
     public interface IComponentService
     {

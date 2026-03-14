@@ -1,12 +1,12 @@
-using Backend.Infrastructure.Data;
-using Backend.Domain.Entities;
-using Backend.Domain.Interfaces;
-using Backend.Application.Responses;
+using Asmpt.Infrastructure.Data;
+using Asmpt.Domain.Entities;
+using Asmpt.Domain.Interfaces;
+using Asmpt.Application.Responses;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
-using Backend.Application.DTOs.Board;
+using Asmpt.Application.DTOs.Board;
 
-namespace Backend.Application.Services
+namespace Asmpt.Application.Services
 {
     public class BoardService : IBoardService
     {

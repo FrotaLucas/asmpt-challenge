@@ -1,4 +1,4 @@
-namespace Backend.Application.DTOs.Order
+namespace Asmpt.Application.DTOs.Order
 {
     public class BoardComponentRequestDto
     {

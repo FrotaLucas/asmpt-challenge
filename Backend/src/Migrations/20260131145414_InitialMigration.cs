@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Backend.Migrations
+namespace Asmpt.Migrations
 {
     /// <inheritdoc />
     public partial class InitialMigration : Migration

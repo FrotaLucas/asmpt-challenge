@@ -1,12 +1,12 @@
-using Backend.Infrastructure.Data;
-using Backend.Domain.Interfaces;
-using Backend.Application.Responses;
-using Backend.Domain.Entities;
+using Asmpt.Infrastructure.Data;
+using Asmpt.Domain.Interfaces;
+using Asmpt.Application.Responses;
+using Asmpt.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using Backend.Application.DTOs.Component;
+using Asmpt.Application.DTOs.Component;
 using AutoMapper;
 
-namespace Backend.Application.Services
+namespace Asmpt.Application.Services
 {
     public class ComponentService : IComponentService
     {

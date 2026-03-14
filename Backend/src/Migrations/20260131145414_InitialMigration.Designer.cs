@@ -1,5 +1,5 @@
 ﻿using System;
-using Backend.Infrastructure.Data;
+using Asmpt.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Backend.Migrations
+namespace Asmpt.Migrations
 {
     [DbContext(typeof(DataContext))]
     [Migration("20260131145414_InitialMigration")]

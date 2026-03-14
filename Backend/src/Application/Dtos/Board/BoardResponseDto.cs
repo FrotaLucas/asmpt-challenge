@@ -1,4 +1,4 @@
-namespace Backend.Application.DTOs.Board
+namespace Asmpt.Application.DTOs.Board
 {
     public class BoardResponsetDto
     {

@@ -1,8 +1,8 @@
 using AutoMapper;
-using Backend.Application.DTOs.Component;
-using Backend.Domain.Entities;
+using Asmpt.Application.DTOs.Component;
+using Asmpt.Domain.Entities;
 
-namespace Backend.Application.Mapping
+namespace Asmpt.Application.Mapping
 {
     public class ComponentMapping : Profile
     {

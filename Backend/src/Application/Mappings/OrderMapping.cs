@@ -1,8 +1,8 @@
 using AutoMapper;
-using Backend.Application.DTOs.Order;
-using Backend.Domain.Entities;
+using Asmpt.Application.DTOs.Order;
+using Asmpt.Domain.Entities;
 
-namespace Backend.Application.Mapping
+namespace Asmpt.Application.Mapping
 {
     public class OrderMapping : Profile
     {
