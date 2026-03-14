@@ -7,29 +7,33 @@
 
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="board-form">
 
-    <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Code</mat-label>
-        <input matInput formControlName="code" />
-    </mat-form-field>
+    <div class="input-row">
+        <mat-form-field appearance="fill">
+            <mat-label>Code</mat-label>
+            <input matInput formControlName="code" />
+        </mat-form-field>
+    
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" />
+        </mat-form-field>
+    </div>
 
-    <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Name</mat-label>
-        <input matInput formControlName="name" />
-    </mat-form-field>
+    <div class="input-row">
+        <mat-form-field appearance="fill">
+            <mat-label>Width(mm)</mat-label>
+            <input matInput formControlName="width" />
+        </mat-form-field>
+    
+        <mat-form-field appearance="fill">
+            <mat-label>Length(mm)</mat-label>
+            <input matInput formControlName="length" />
+        </mat-form-field>
+    </div>
 
     <mat-form-field appearance="fill" class="full-width">
         <mat-label>Description</mat-label>
         <input matInput formControlName="description" />
-    </mat-form-field>
-
-    <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Width(mm)</mat-label>
-        <input matInput formControlName="width" />
-    </mat-form-field>
-
-    <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Length(mm)</mat-label>
-        <input matInput formControlName="length" />
     </mat-form-field>
 
     <div style="margin-top: 20px;">
