@@ -1,5 +1,9 @@
 // update Azure
 
+
+//atualizar somente  main. Nao precisa especificar "main" pq upstream ja esta configurado. 
+git push azure 
+
 // apenas a branch main
 git push azure main
 
