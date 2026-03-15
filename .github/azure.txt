@@ -1,0 +1,10 @@
+// update Azure
+
+// apenas a branch main
+git push azure main
+
+// todas as branches
+git push azure --all
+
+// todas as tags
+git push azure --tags
