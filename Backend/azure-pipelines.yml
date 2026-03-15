@@ -1,12 +1,16 @@
 trigger:
-    - main
+  - main
 
 pool:
-    vmImage: 'Default'
+  vmImage: 'ubuntu-latest'  
 
 variables:
-    BuildConfiguration: 'Release'
-    solutionPath: 'Backend/asmpt-challenge.sln'
+  BuildConfiguration: 'Release'
+  solutionPath: 'Backend/asmpt-challenge.sln'
 
 steps:
 - checkout: self
+
+- script: |
+    echo "Hello"
+  displayName: 'Print Hello'
