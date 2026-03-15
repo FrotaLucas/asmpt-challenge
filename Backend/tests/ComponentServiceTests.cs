@@ -5,7 +5,7 @@ using Asmpt.Infrastructure.Data;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging.Abstractions;
-
+// Note: In a real project, you would typically use a mocking framework like Moq to mock dependencies such as the database context and logger.
 public class ComponentServiceTests
 {
     private readonly IMapper _mapper;
