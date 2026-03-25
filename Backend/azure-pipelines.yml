@@ -14,4 +14,11 @@ steps:
 - script: |
     echo "Hello"
     echo "variable of configuration: $(BuildConfiguration)"
-  displayName: 'Print Hello'
+  displayName: 'Script Print Hello'
+
+- script: 
+    echo "Working Directory:"
+    pwd
+    echo "list all files"
+    ls
+  displayName: 'Script show directory'
