@@ -12,6 +12,11 @@ steps:
 - checkout: self
 
 - script: |
+    dotnet --list-sdks
+    dotnet --version
+  displayName: 'Verificar Versões do .NET instaladas'
+
+- script: |
     echo "Hello"
     echo "variable of configuration: $(BuildConfiguration)"
   displayName: 'Script Print Hello'
@@ -23,22 +28,24 @@ steps:
     ls -R
   displayName: 'Script show directory'
 
-- script: |
-    echo "setup"
-  displayName: 'Script setup'
 
 
-  # 1. Restaura as dependências
-- task: DotNetCoreCLI@2
-  displayName: 'Restore'
-  inputs:
-    command: 'restore'
-    projects: '$(solutionPath)'
+# - script: |
+#     echo "setup"
+#   displayName: 'Script setup'
+
+
+# 1. Restaura as dependências
+# - task: DotNetCoreCLI@2
+#   displayName: 'Restore'
+#   inputs:
+#     command: 'restore'
+#     projects: '$(solutionPath)'
 
 # 2. Compila a aplicação
-- task: DotNetCoreCLI@2
-  displayName: 'Build'
-  inputs:
-    command: 'build'
-    projects: '$(solutionPath)'
-    arguments: '--configuration $(BuildConfiguration)'
+# - task: DotNetCoreCLI@2
+#   displayName: 'Build'
+#   inputs:
+#     command: 'build'
+#     projects: '$(solutionPath)'
+#     arguments: '--configuration $(BuildConfiguration)'
