@@ -22,3 +22,23 @@ steps:
     echo "list all files:"
     ls -R
   displayName: 'Script show directory'
+
+- script: |
+    echo "setup"
+  displayName: 'Script setup'
+
+
+  # 1. Restaura as dependências
+- task: DotNetCoreCLI@2
+  displayName: 'Restore'
+  inputs:
+    command: 'restore'
+    projects: '$(solutionPath)'
+
+# 2. Compila a aplicação
+- task: DotNetCoreCLI@2
+  displayName: 'Build'
+  inputs:
+    command: 'build'
+    projects: '$(solutionPath)'
+    arguments: '--configuration $(BuildConfiguration)'
