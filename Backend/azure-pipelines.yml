@@ -2,7 +2,7 @@ trigger:
   - main
 
 pool:
-  vmImage: 'Default'  
+  vmImage: 'ubuntu-latest'  
 
 variables:
   BuildConfiguration: 'Release'
@@ -13,4 +13,5 @@ steps:
 
 - script: |
     echo "Hello"
+    echo "variable of configuration: $(BuildConfiguration)"
   displayName: 'Print Hello'
