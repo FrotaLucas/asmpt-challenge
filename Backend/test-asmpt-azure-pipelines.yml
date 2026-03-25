@@ -14,7 +14,7 @@ steps:
 - script: |
     dotnet --list-sdks
     dotnet --version
-  displayName: 'Verificar Versões do .NET instaladas'
+  displayName: 'script show all installed .NET versions'
 
 - script: |
     echo "Hello"
