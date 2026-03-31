@@ -8,8 +8,38 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+variables:
+  solutionPath: 'Backend/asmpt-challenge.sln'
+
 steps:
 
   - script: |
       echo 'hellow'
     displayName: 'first script'
+
+  - script: |
+      echo 'restore'
+    displayName: 'restore all dependencies'
+
+
+  - task: DotNetCoreCLI@2
+    displayName: 'task restore NET dependencies'
+    inputs:
+      command: 'restore'
+      projects: '$(solutionPath)'
+
+#1. Restaura as dependências
+# - task: DotNetCoreCLI@2
+#   displayName: 'Restore'
+#   inputs:
+#     command: 'restore'
+#     projects: '$(solutionPath)'
+
+# 2. Compila a aplicação
+# - task: DotNetCoreCLI@2
+#   displayName: 'Build'
+#   inputs:
+#     command: 'build'
+#     projects: '$(solutionPath)'
+#     arguments: '--configuration $(BuildConfiguration)'
+
