@@ -10,6 +10,7 @@ pool:
 
 variables:
   solutionPath: 'Backend/asmpt-challenge.sln'
+  buildConfiguration: 'Release'
 
 steps:
 
@@ -22,24 +23,20 @@ steps:
     displayName: 'restore all dependencies'
 
 
+#1. Restaura as dependências
   - task: DotNetCoreCLI@2
     displayName: 'task restore NET dependencies'
     inputs:
-      command: 'restore'
+      command: restore
       projects: '$(solutionPath)'
 
-#1. Restaura as dependências
-# - task: DotNetCoreCLI@2
-#   displayName: 'Restore'
-#   inputs:
-#     command: 'restore'
-#     projects: '$(solutionPath)'
-
 # 2. Compila a aplicação
-# - task: DotNetCoreCLI@2
-#   displayName: 'Build'
-#   inputs:
-#     command: 'build'
-#     projects: '$(solutionPath)'
-#     arguments: '--configuration $(BuildConfiguration)'
+  - task: DotNetCoreCLI@2
+    displayName: 'Build solution'
+    inputs:
+      command: 'build'
+      projects: '$(solutionPath)'
+      arguments: '--configuration $(buildConfiguration)'
+
+
 
