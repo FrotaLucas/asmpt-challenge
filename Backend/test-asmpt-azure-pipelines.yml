@@ -9,7 +9,6 @@ variables:
   solutionPath: 'Backend/asmpt-challenge.sln'
 
 steps:
-#- checkout: self
 
 - script: |
     dotnet --list-sdks
