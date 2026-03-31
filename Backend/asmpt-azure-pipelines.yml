@@ -1,3 +1,9 @@
 
 
 #new pipeline
+
+steps:
+
+- script: |
+    echo: 'hellow wolrd'
+  displayName: 'first script'
