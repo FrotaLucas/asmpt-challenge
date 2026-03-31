@@ -14,12 +14,12 @@ steps:
 - script: |
     dotnet --list-sdks
     dotnet --version
-  displayName: 'script show all installed .NET versions'
+  displayName: 'script show all installed .NET versions on azure host'
 
 - script: |
     echo "Hello"
     echo "variable of configuration: $(BuildConfiguration)"
-  displayName: 'Script Print Hello'
+  displayName: 'Script Print Hellow'
 
 - script: |
     echo "Working Directory:"
