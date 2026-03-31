@@ -2,8 +2,61 @@
 
 #new pipeline
 
+# steps:
+
+# - script: |
+#     echo: 'hellow wolrd'
+#   displayName: 'first script'
+
+
+trigger:
+  - main
+
+pool:
+  vmImage: 'ubuntu-latest'  
+
+variables:
+  BuildConfiguration: 'Release'
+  solutionPath: 'Backend/asmpt-challenge.sln'
+
 steps:
+#- checkout: self
 
 - script: |
-    echo: 'hellow wolrd'
-  displayName: 'first script'
+    dotnet --list-sdks
+    dotnet --version
+  displayName: 'script show all installed .NET versions on azure host'
+
+- script: |
+    echo "Hello"
+    echo "variable of configuration: $(BuildConfiguration)"
+  displayName: 'Script Print Hellow'
+
+- script: |
+    echo "Working Directory:"
+    pwd
+    echo "list all files:"
+    ls -R
+  displayName: 'Script show directory'
+
+
+
+# - script: |
+#     echo "setup"
+#   displayName: 'Script setup'
+
+
+# 1. Restaura as dependências
+# - task: DotNetCoreCLI@2
+#   displayName: 'Restore'
+#   inputs:
+#     command: 'restore'
+#     projects: '$(solutionPath)'
+
+# 2. Compila a aplicação
+# - task: DotNetCoreCLI@2
+#   displayName: 'Build'
+#   inputs:
+#     command: 'build'
+#     projects: '$(solutionPath)'
+#     arguments: '--configuration $(BuildConfiguration)'
