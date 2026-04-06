@@ -7,7 +7,7 @@ git push azure
 // atualiza apenas a branch main
 git push azure main
 
-// atualiza todas as branches
+// atualiza todas as branchess
 git push azure --all
 
 // atualiza todas as tags
