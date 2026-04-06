@@ -38,5 +38,7 @@ steps:
       projects: '$(solutionPath)'
       arguments: '--configuration $(buildConfiguration)'
 
+#3 Tests
 
-
+  - script: dotnet test Backend/tests --configuration $(buildConfiguration) --no-build --verbosity normal
+    displayName: 'run tests'
