@@ -4,13 +4,13 @@
 //atualizar somente  main. Nao precisa especificar "main" pq upstream ja esta configurado. 
 git push azure 
 
-// apenas a branch main
+// atualiza apenas a branch main
 git push azure main
 
-// todas as branches
+// atualiza todas as branches
 git push azure --all
 
-// todas as tags
+// atualiza todas as tags
 git push azure --tags
 
 //new coment
