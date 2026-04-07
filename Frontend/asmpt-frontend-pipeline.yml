@@ -1,3 +1,18 @@
 #pipeline Frontend
 
+trigger:
+  - main
 
+pool:
+  vmImage: 'ubunto-latest'
+
+variables:
+  frontendPath: 'Frontend'
+
+
+steps:
+
+  - task: NodeTool@0
+    displayName: 'Install Node.js'
+    inputs:
+        versionSpec: '20.x'
