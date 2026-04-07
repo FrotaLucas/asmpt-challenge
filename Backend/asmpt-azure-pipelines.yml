@@ -38,7 +38,14 @@ steps:
       projects: '$(solutionPath)'
       arguments: '--configuration $(buildConfiguration)'
 
-#3 Tests
+#3 Tests / script block
+  # - script: dotnet test Backend/tests --configuration $(buildConfiguration) --no-build --verbosity normal
+  #   displayName: 'run tests'
 
-  - script: dotnet test Backend/tests --configuration $(buildConfiguration) --no-build --verbosity normal
-    displayName: 'run tests'
+#3 Tests/ Task block
+  - task: DotNetCoreCLI@2
+    displayName: 'Run Tests'
+    inputs:
+      command: test
+      projects: 'Backend/tests'
+      arguments: '--configuration $(buildConfiguration) --no-build --verbosity normal'
