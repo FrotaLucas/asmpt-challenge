@@ -39,7 +39,7 @@ steps:
       arguments: '--configuration $(buildConfiguration)'
 
 #3 Tests / script block
-  # - script: dotnet test Backend/tests --configuration $(buildConfiguration) --no-build --verbosity normal
+  # - script: dotnet test Backend/tests --configuration $(buildConfiguration) --no-build
   #   displayName: 'run tests'
 
 #3 Tests/ Task block
@@ -48,4 +48,4 @@ steps:
     inputs:
       command: test
       projects: 'Backend/tests'
-      arguments: '--configuration $(buildConfiguration) --no-build --verbosity normal'
+      arguments: '--configuration $(buildConfiguration) --no-build'
