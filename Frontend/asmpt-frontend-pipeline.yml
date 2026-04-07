@@ -24,7 +24,7 @@ steps:
       workingDir: '$(frontendPath)'
 
   - task: Npm@1
-    displayName: 'Build'
+    displayName: 'Build Frontend'
     inputs:
       command: custom
       workingDir: '$(frontendPath)'
