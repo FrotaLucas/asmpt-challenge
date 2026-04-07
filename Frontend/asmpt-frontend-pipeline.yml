@@ -16,3 +16,16 @@ steps:
     displayName: 'Install Node.js'
     inputs:
         versionSpec: '20.x'
+
+  - task: Npm@1
+    displayName: 'Install Dependencies'
+    inputs:
+      command: install
+      workingDir: '$(frontendPath)'
+
+  - task: Npm@1
+    displayName: 'Build'
+    inputs:
+      command: custom
+      workingDir: '$(frontendPath)'
+      customCommand: 'run build'
