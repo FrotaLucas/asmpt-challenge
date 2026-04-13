@@ -7,7 +7,7 @@
 #GARANTIR EXECUCAO EM SERIE E NAO EM PARALELO
 
 trigger:
-- main
+  - main
 
 pool:
   vmImage: 'ubuntu-latest'
