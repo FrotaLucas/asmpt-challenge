@@ -1,7 +1,6 @@
 
 
 #new pipelinee
-#test
 
 trigger:
   branches:
@@ -11,8 +10,10 @@ trigger:
     include:
       - Backend/*
     exclude:
-      - '*.yml'
-      
+      - '**/*.yml'
+      - '**/*.yaml'
+
+
 pool:
   vmImage: 'ubuntu-latest'
 
