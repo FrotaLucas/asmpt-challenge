@@ -3,8 +3,8 @@
 #new pipelinee
 #test
 
-trigger: 
-  - main
+trigger: none
+  # - main
 
 pool:
   vmImage: 'ubuntu-latest'
