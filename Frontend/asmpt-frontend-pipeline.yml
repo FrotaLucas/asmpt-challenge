@@ -6,22 +6,17 @@
 #AO APROVAR UM MERGE OS 3 PIPELINES SAO TRIGADOS E PARACE QUE ACONTECE EM PARALELO
 #GARANTIR EXECUCAO EM SERIE E NAO EM PARALELO
 
-# trigger:
-#   - main
+trigger:
+- main
 
 pool:
   vmImage: 'ubuntu-latest'
 
-variables:
-  frontendPath: 'Frontend'
-
-
 steps:
-
-  - task: NodeTool@0
-    displayName: 'Install Node.js'
+  - task: UseNode@1
+    displayName: Install Node.js
     inputs:
-        versionSpec: '20.x'
+      version: '20.x'
 
   - task: Npm@1
     displayName: 'Install Dependencies'
