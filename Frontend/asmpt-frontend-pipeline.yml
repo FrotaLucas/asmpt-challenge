@@ -4,7 +4,14 @@
 #GARANTIR EXECUCAO EM SERIE E NAO EM PARALELO
 
 trigger:
-  - main
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - Frontend/*
+    exclude:
+      - '*.yml'
 
 pool:
   vmImage: 'ubuntu-latest'

@@ -3,9 +3,16 @@
 #new pipelinee
 #test
 
-trigger: none
-  # - main
-
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - Backend/*
+    exclude:
+      - '*.yml'
+      
 pool:
   vmImage: 'ubuntu-latest'
 
