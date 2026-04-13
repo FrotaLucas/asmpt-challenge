@@ -11,7 +11,7 @@ trigger:
       - Backend/*
     exclude:
       - '**/*.yml'
-
+      - '**/*.yaml'
 
 pool:
   vmImage: 'ubuntu-latest'
