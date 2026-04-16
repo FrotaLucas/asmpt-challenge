@@ -9,7 +9,7 @@ trigger:
 
 stages:
 
-  - stage: Backend
+  - stage: Stage_1
     displayName: 'Run backend pipeline'
     jobs:
       - job: RunBackend
@@ -17,7 +17,7 @@ stages:
           - checkout: self
 
 
-  - stage: Frontend
+  - stage: Stage_2
     displayName: 'Run frontend pipeline'
     jobs:
       - job: RunFrontEnd
