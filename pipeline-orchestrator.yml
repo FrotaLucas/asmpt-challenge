@@ -27,6 +27,9 @@ stages:
 
   - stage: Stage_2
     displayName: 'frontend pipeline'
+    dependsOn: Stage_1
+    condition: succeeded()
+
     jobs:
       - job: RunFrontEnd
         steps:
