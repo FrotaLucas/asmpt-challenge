@@ -10,7 +10,7 @@ trigger:
 stages:
 
   - stage: Stage_1
-    displayName: 'Run backend pipeline'
+    displayName: 'backend pipeline'
     jobs:
       - job: RunBackend
         steps:
@@ -18,7 +18,7 @@ stages:
 
 
   - stage: Stage_2
-    displayName: 'Run frontend pipeline'
+    displayName: 'frontend pipeline'
     jobs:
       - job: RunFrontEnd
         steps:
