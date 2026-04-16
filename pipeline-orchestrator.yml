@@ -31,7 +31,7 @@ stages:
     condition: succeeded()
 
     jobs:
-      - job: RunFrontEnd
+      - job: RunFrontend
         steps:
           - checkout: self
           - template: Frontend/asmpt-frontend-template.yml
