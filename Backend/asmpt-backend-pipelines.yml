@@ -1,0 +1,59 @@
+
+
+#new pipelinee
+
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - Backend/*
+    exclude:
+      - '**/*.yml'
+      - '**/*.yaml'
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  solutionPath: 'Backend/asmpt-challenge.sln'
+  buildConfiguration: 'Release'
+
+steps:
+
+  - script: |
+      echo 'hellow'
+    displayName: 'first script'
+
+  - script: |
+      echo 'restore'
+    displayName: 'restore all dependencies'
+
+
+#1. Restaura as dependências
+  - task: DotNetCoreCLI@2
+    displayName: 'task restore NET dependencies'
+    inputs:
+      command: restore
+      projects: '$(solutionPath)'
+
+#2. Compila a aplicação
+  - task: DotNetCoreCLI@2
+    displayName: 'Build solution'
+    inputs:
+      command: build
+      projects: '$(solutionPath)'
+      arguments: '--configuration $(buildConfiguration)'
+
+#3 Tests / script block
+  # - script: dotnet test Backend/tests --configuration $(buildConfiguration) --no-build
+  #   displayName: 'run tests'
+
+#3 Tests/ Task block
+  - task: DotNetCoreCLI@2
+    displayName: 'Run Tests'
+    inputs:
+      command: test
+      projects: 'Backend/tests'
+      arguments: '--configuration $(buildConfiguration) --no-build'
