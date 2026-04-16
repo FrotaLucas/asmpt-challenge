@@ -14,7 +14,7 @@
 #       - '**/*.yaml'
 
 
-trigger: none
+# trigger: none
 
 steps:
 
