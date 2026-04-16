@@ -13,9 +13,9 @@
 #       - '**/*.yml'
 #       - '**/*.yaml'
 
-variables:
-  solutionPath: 'Backend/asmpt-challenge.sln'
-  buildConfiguration: 'Release'
+# variables:
+#   solutionPath: 'Backend/asmpt-challenge.sln'
+#   buildConfiguration: 'Release'
 
 steps:
 
