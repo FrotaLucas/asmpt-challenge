@@ -13,9 +13,6 @@
 #       - '**/*.yml'
 #       - '**/*.yaml'
 
-
-# trigger: none
-
 steps:
 
   - script: |
