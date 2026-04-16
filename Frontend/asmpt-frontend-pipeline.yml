@@ -14,9 +14,6 @@
 
 trigger: none
 
-variables:
-  frontendPath: 'Frontend'
-
 steps:
   - task: UseNode@1
     displayName: Install Node.js
