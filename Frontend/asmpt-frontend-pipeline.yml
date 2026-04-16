@@ -13,6 +13,7 @@ trigger:
       - Frontend/*
     exclude:
       - '**/*.yml'
+      - '**/*.yalm'
 
 pool:
   vmImage: 'ubuntu-latest'
