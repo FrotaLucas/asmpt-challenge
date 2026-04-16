@@ -2,16 +2,18 @@
 
 #new pipelinee
 
-trigger:
-  branches:
-    include:
-      - main
-  paths:
-    include:
-      - Backend/*
-    exclude:
-      - '**/*.yml'
-      - '**/*.yaml'
+# trigger:
+#   branches:
+#     include:
+#       - main
+#   paths:
+#     include:
+#       - Backend/*
+#     exclude:
+#       - '**/*.yml'
+#       - '**/*.yaml'
+
+trigger: none
 
 pool:
   vmImage: 'ubuntu-latest'
