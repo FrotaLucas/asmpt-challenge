@@ -5,7 +5,12 @@ trigger:
     include:
       - main
 
+pool:
+  vmImage: 'ubuntu-latest'
 
+variables:
+  solutionPath: 'Backend/asmpt-challenge.sln'
+  buildConfiguration: 'Release'
 
 stages:
 
@@ -15,6 +20,7 @@ stages:
       - job: RunBackend
         steps:
           - checkout: self
+          - template: Backend/asmpt-backend-pipeline.yml
 
 
   - stage: Stage_2
