@@ -1,22 +1,18 @@
 #pipeline Frontend
-#test
-#??
-#AO APROVAR UM MERGE OS 3 PIPELINES SAO TRIGADOS E PARACE QUE ACONTECE EM PARALELO
-#GARANTIR EXECUCAO EM SERIE E NAO EM PARALELO
 
-trigger:
-  branches:
-    include:
-      - main
-  paths:
-    include:
-      - Frontend/*
-    exclude:
-      - '**/*.yml'
-      - '**/*.yalm'
 
-pool:
-  vmImage: 'ubuntu-latest'
+# trigger:
+#   branches:
+#     include:
+#       - main
+#   paths:
+#     include:
+#       - Frontend/*
+#     exclude:
+#       - '**/*.yml'
+#       - '**/*.yalm'
+
+trigger: none
 
 variables:
   frontendPath: 'Frontend'
