@@ -11,6 +11,8 @@ pool:
 variables:
   solutionPath: 'Backend/asmpt-challenge.sln'
   buildConfiguration: 'Release'
+  frontendPath: 'Frontend'
+
 
 stages:
 
@@ -20,7 +22,7 @@ stages:
       - job: RunBackend
         steps:
           - checkout: self
-          - template: Backend/asmpt-backend-pipeline.yml
+          - template: Backend/asmpt-backend-template.yml
 
 
   - stage: Stage_2
@@ -29,3 +31,4 @@ stages:
       - job: RunFrontEnd
         steps:
           - checkout: self
+          - template: Frontend/asmpt-frontend-template.yml
