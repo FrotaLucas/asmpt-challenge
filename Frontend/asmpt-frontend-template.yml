@@ -1,6 +1,4 @@
-#pipeline Frontend
-
-
+#NOT FOR TEMPLATE, PIPELINE ONLY
 # trigger:
 #   branches:
 #     include:
@@ -11,8 +9,6 @@
 #     exclude:
 #       - '**/*.yml'
 #       - '**/*.yalm'
-
-trigger: none
 
 steps:
   - task: UseNode@1

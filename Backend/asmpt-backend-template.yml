@@ -1,7 +1,4 @@
-
-
-#new pipelinee
-#test
+#NOT FOR TEMPLATE, PIPELINE ONLY
 # trigger:
 #   branches:
 #     include:
