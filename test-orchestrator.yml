@@ -1,0 +1,10 @@
+trigger: none
+
+
+
+stages:
+    - stage: First_Stage
+
+
+    - stage: Second_Stage
+    
