@@ -2,4 +2,9 @@
 
 steps:
     - script: |
-        echo: "hellow template backend"
+        echo "hellow template backend"
+    - task: DotNetCoreCLI@1
+      displayName: install dotnet
+      inputs:
+          command: build
+          projects: $(SolutionPath)
