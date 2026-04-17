@@ -9,3 +9,9 @@ steps:
     - script: |
         echo "hellow intermediate"
       displayName: intermediate script
+
+    - task: Npm@1
+      displayName: dowload dependencies 
+      inputs:
+        command: install
+        workingDir: $(FrontendDirectory)
