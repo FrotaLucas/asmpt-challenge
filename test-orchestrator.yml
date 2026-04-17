@@ -10,6 +10,7 @@ stages:
     - stage: First_Stage
       jobs:
           - job: RunFrontend
+            displayName: JobFrontend
             steps:
               - checkout: self
               - template: Frontend/test-frontend-tamplate.yml
