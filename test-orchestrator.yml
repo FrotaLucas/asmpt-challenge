@@ -18,3 +18,7 @@ stages:
     - stage: Second_Stage
       jobs:
           - job: RunBackend
+            displayName: JobBackend
+            steps:
+              - checkout: self
+              - template: Backend/test-backend-tamplate.yml
