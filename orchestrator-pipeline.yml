@@ -11,7 +11,7 @@ pool:
 variables:
   solutionPath: 'Backend/asmpt-challenge.sln'
   buildConfiguration: 'Release'
-  frontendPath: 'Frontend'
+  frontendDirectory: 'Frontend'
 
 
 stages:

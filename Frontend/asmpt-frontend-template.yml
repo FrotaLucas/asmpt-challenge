@@ -20,11 +20,11 @@ steps:
     displayName: 'Install Dependencies'
     inputs:
       command: install
-      workingDir: '$(frontendPath)'
+      workingDir: '$(frontendDirectory)'
 
   - task: Npm@1
     displayName: 'Build Frontend'
     inputs:
       command: custom
-      workingDir: '$(frontendPath)'
+      workingDir: '$(frontendDirectory)'
       customCommand: 'run build'
