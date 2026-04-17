@@ -2,3 +2,4 @@
 
 steps:
     - task: UseNode@1
+      displayName: 'install node'
