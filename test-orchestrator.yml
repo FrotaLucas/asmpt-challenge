@@ -4,7 +4,9 @@ trigger: none
 
 stages:
     - stage: First_Stage
-
+      jobs:
+          - job: RunFrontend
 
     - stage: Second_Stage
-    
+      jobs:
+          - job: RunBackend
