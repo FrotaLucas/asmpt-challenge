@@ -3,6 +3,8 @@
 steps:
     - script: |
         echo "hellow template backend"
+      displayName: script 
+      
     - task: DotNetCoreCLI@1
       displayName: install dotnet
       inputs:
