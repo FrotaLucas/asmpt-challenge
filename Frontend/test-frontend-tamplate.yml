@@ -7,5 +7,5 @@ steps:
         version: '20.0'
 
     - script: |
-        echo: 'hellow intermediate'
-      displayName: 'intermediate script'
+        echo: "hellow intermediate"
+      displayName: intermediate script
