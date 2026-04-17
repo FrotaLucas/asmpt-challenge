@@ -1,11 +1,18 @@
 trigger: none
 
+pool:
+  vmImage: 'ubuntu-latest'
 
+variables:
+  FrontendDirectory: "Frontend"
 
 stages:
     - stage: First_Stage
       jobs:
           - job: RunFrontend
+            steps:
+              - checkout: self
+              - template: Frontend/test-frontend-tamplate.yml
 
     - stage: Second_Stage
       jobs:
