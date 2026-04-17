@@ -15,3 +15,10 @@ steps:
       inputs:
         command: install
         workingDir: $(FrontendDirectory)
+
+    - task: Npm@1
+      displayName: build application
+      inputs:
+        command: custom
+        workingDir: $(FrontendDirectory)
+        customCommand: 'run build'
