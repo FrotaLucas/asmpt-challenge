@@ -12,9 +12,9 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  solutionPath: 'Backend/asmpt-challenge.sln'
-  buildConfiguration: 'Release'
-  frontendDirectory: 'Frontend'
+  solutionPath: Backend/asmpt-challenge.sln
+  buildConfiguration: Release
+  frontendDirectory: Frontend
 
 
 stages:
