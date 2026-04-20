@@ -22,3 +22,4 @@ steps:
       inputs:
           command: build
           projects: $(SolutionPath)
+          arguments: '--configuration $(BuildConfiguration)'
