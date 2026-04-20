@@ -6,6 +6,7 @@ pool:
 variables:
   FrontendDirectory: Frontend
   SolutionPath: Backend
+  BuildConfiguration: Release
 
 stages:
     - stage: First_Stage
