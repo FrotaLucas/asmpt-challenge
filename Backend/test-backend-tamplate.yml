@@ -10,3 +10,15 @@ steps:
       inputs:
           command: build
           projects: $(SolutionPath)
+
+    - task: DotNetCoreCLI@1
+      displayName: Restore
+      inputs:
+          command: restore
+          projects: $(SolutionPath)
+
+    - task: DotNetCoreCLI@1
+      displayName: Build
+      inputs:
+          command: build
+          projects: $(SolutionPath)
