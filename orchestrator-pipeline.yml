@@ -2,11 +2,6 @@
 #   branches:
 #     include:
 #       - main
-#
-#
-#
-
-trigger: none 
 
 pool:
   vmImage: 'ubuntu-latest'
