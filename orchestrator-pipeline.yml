@@ -2,9 +2,6 @@
 #   branches:
 #     include:
 #       - main
-#
-#
-#
 
 trigger: none 
 
