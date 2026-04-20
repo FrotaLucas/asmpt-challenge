@@ -2,6 +2,7 @@
 #   branches:
 #     include:
 #       - main
+#test 
 
 pool:
   vmImage: 'ubuntu-latest'
