@@ -17,7 +17,8 @@ RUN dotnet test "tests/Tests.csproj" -c Release --no-build
 WORKDIR "/app/src"
 RUN dotnet build "Project.csproj" -c Release -o /app/build
 
-FROM build AS final
+# small image to execute build stage
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 COPY --from=build /app/build .
 ENTRYPOINT ["dotnet", "Project.dll"]
