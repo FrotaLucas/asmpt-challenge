@@ -11,15 +11,15 @@ COPY . .
 
 # run tests
 WORKDIR "/app/tests"
-RUN dotnet test "tests/Tests.csproj" -c Release --no-build
+RUN dotnet test "tests/Tests.csproj" -c Release --no-restore
 
-# build the project
+# publish the project
 WORKDIR "/app/src"
-RUN dotnet build "Project.csproj" -c Release -o /app/build
+RUN dotnet publish "Project.csproj" -c Release --no-restore -o /app/publish
 
-# small image to execute build stage
+# small image to execute publish stage
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
-COPY --from=build /app/build .
+COPY --from=build /app/publish .
 ENTRYPOINT ["dotnet", "Project.dll"]
 
