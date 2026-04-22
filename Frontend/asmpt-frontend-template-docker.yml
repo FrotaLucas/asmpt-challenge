@@ -6,12 +6,12 @@ steps:
       echo 'hellow dockerhub'
     displayName: 'first script'
 
-  - task:
+  - task: Docker@2
     displayName: 'build and push image to docker hub'
     inputs:
-      containerRegistry: 'dockerhub-connection'
-      repository: 'frotalucas/asmpt-frontend-image'
       command: 'buildAndPush'
+      repository: 'frotalucas/asmpt-frontend-image'
       Dockerfile: 'Frontend/Dockerfile'
+      containerRegistry: 'dockerhub-connection'
       tags: |
         $(Build.BuildId)
