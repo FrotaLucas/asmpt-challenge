@@ -15,3 +15,13 @@ stages:
           - job: UploadDockerBackend
             steps:
                 - checkout: self
+                - template: Backend/asmpt-backend-template-docker.yml
+    - stage: Stage_2
+      displayName: Docker Frontend
+      dependsOn: Stage_1
+      condition: succeeded()
+      jobs:
+          - job: UploadDockerFrontend
+            steps:
+                - checkout: self
+                - template: Frontend/asmpt-frontend-template-docker.yml
