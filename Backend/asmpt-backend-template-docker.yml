@@ -13,4 +13,5 @@ steps:
       Dockerfile: 'Backend/Dockerfile'
       containerRegistry: 'dockerhub-connection'
       tags: |
+        latest
         $(Build.BuildId)
