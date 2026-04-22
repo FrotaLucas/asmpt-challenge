@@ -7,6 +7,8 @@ trigger: none
 pool:
     vmImage: 'ubuntu-latest'
 
+variables:
+  dockerhubConnectionName: dockerhub-connection
 
 stages:
     - stage: Stage_1
@@ -15,7 +17,12 @@ stages:
           - job: UploadDockerBackend
             steps:
                 - checkout: self
-                - template: Backend/asmpt-backend-template-docker.yml
+                - template: docker-template.yml
+                  parameters:
+                    repositoryName: 'frotalucas/asmpt-backend-image'
+                    dockerhubConnectionName: '$(dockerhubConnectionName)'
+                    dockerfilePath: 'Backend/Dockerfile'
+
     - stage: Stage_2
       displayName: Docker Frontend
       dependsOn: Stage_1
@@ -24,4 +31,8 @@ stages:
           - job: UploadDockerFrontend
             steps:
                 - checkout: self
-                - template: Frontend/asmpt-frontend-template-docker.yml
+                - template: docker-template.yml
+                  parameters:
+                    repositoryName: 'frotalucas/asmpt-frontend-image'
+                    dockerhubConnectionName: '$(dockerhubConnectionName)'
+                    dockerfilePath: 'Frontend/Dockerfile'
