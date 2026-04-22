@@ -1,12 +1,12 @@
 parameters:
-  name: repositoryName
-  type: string
-  
-  name: dockerhubConnectionName
-  type: string
+  - name: repositoryName
+    type: string
 
-  name: dockerfilePath
-  type: string
+  - name: dockerhubConnectionName
+    type: string
+
+  - name: dockerfilePath
+    type: string
 
 steps:
   - script: |
