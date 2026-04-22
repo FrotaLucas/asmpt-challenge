@@ -17,9 +17,9 @@ steps:
     displayName: 'build and push image to docker hub'
     inputs: 
       command: 'buildAndPush'
-      respository: '{{parameters.repositoryName}}'
-      dockerFile: '{{parameters.dockerfilePath}}'
-      containerRegistry: '{{parameters.dockerhubConnectionName}}'
+      respository: '${{parameters.repositoryName}}'
+      dockerFile: '${{parameters.dockerfilePath}}'
+      containerRegistry: '${{parameters.dockerhubConnectionName}}'
       tags: |
         latest
         $(Build.BuildId)
