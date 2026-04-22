@@ -11,7 +11,7 @@ COPY . .
 
 # run tests
 WORKDIR "/app/tests"
-RUN dotnet test "tests/Tests.csproj" -c Release --no-restore
+RUN dotnet test "Tests.csproj" -c Release --no-restore
 
 # publish the project
 WORKDIR "/app/src"
