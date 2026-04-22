@@ -1,0 +1,17 @@
+
+
+steps:
+  - script: |
+      echo 'hellow docker hub'
+    displayName: 'first script'
+
+  - task: Docker@2
+    displayName: 'build and push image to docker hub'
+    inputs: 
+      command: 'buildAndPush'
+      respository: '$(repositoryName)'
+      dockerFile: '$(dockerFilePath)'
+      containerRegistry: 'dockerhub-connection'
+      tags: |
+        latest
+        $(Build.BuildId)
