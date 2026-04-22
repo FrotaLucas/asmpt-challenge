@@ -1,0 +1,17 @@
+
+
+steps:
+
+  - script: |
+      echo 'hellow dockerhub'
+    displayName: 'first script'
+
+  - task:
+    displayName: 'build and push image to docker hub'
+    inputs:
+      containerRegistry: 'dockerhub-connection'
+      repository: 'frotalucas/asmpt-frontend-image'
+      command: 'buildAndPush'
+      Dockerfile: 'Frontend/Dockerfile'
+      tags: |
+        $(Build.BuildId)
