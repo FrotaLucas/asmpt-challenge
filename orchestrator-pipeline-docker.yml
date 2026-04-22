@@ -1,1 +1,17 @@
 #pipeline docker hub
+
+
+trigger: none
+
+
+pool:
+    vmImage: 'ubuntu-lates'
+
+
+stages:
+    - stage: Stage_1
+      displayName: Docker Backend
+      jobs:
+          - job: UploadDockerBackend
+            steps:
+                - checkout: self
