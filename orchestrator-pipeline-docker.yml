@@ -5,7 +5,7 @@ trigger: none
 
 
 pool:
-    vmImage: 'ubuntu-lates'
+    vmImage: 'ubuntu-latest'
 
 
 stages:
