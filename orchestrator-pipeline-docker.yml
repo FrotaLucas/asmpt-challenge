@@ -1,7 +1,7 @@
 #pipeline docker hub
 
 
-trigger: none
+# trigger: none
 
 
 pool:
