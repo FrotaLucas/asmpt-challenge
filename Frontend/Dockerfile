@@ -11,5 +11,5 @@ RUN npm run build
 # small image to execute publish stage
 FROM nginx:alpine as final
 WORKDIR /usr/share/nginx/html
-COPY --from=build /app/build .
+COPY --from=build /app/dist/smt-order-management .
 
