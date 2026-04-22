@@ -1,4 +1,12 @@
+parameters:
+  name: repositoryName
+  type: string
+  
+  name: dockerhubConnectionName
+  type: string
 
+  name: dockerfilePath
+  type: string
 
 steps:
   - script: |
@@ -9,9 +17,9 @@ steps:
     displayName: 'build and push image to docker hub'
     inputs: 
       command: 'buildAndPush'
-      respository: '$(repositoryName)'
-      dockerFile: '$(dockerFilePath)'
-      containerRegistry: 'dockerhub-connection'
+      respository: '{{parameters.repositoryName}}'
+      dockerFile: '{{parameters.dockerfilePath}}'
+      containerRegistry: '{{parameters.dockerhubConnectionName}}'
       tags: |
         latest
         $(Build.BuildId)
