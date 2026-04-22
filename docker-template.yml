@@ -14,10 +14,10 @@ steps:
     displayName: 'first script'
 
   - task: Docker@2
-    displayName: 'build and push image to docker hub'
+    displayName: 'build and push to docker hub from image: ${{parameters.repositoryName}}'
     inputs: 
       command: 'buildAndPush'
-      respository: '${{parameters.repositoryName}}'
+      repository: '${{parameters.repositoryName}}'
       dockerFile: '${{parameters.dockerfilePath}}'
       containerRegistry: '${{parameters.dockerhubConnectionName}}'
       tags: |
