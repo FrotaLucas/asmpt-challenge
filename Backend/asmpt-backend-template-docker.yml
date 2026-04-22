@@ -10,7 +10,7 @@ steps:
     inputs:
       command: 'buildAndPush'
       repository: 'frotalucas/asmpt-backend-image'
-      Dockerfile: 'Backend/Dockerfile'
+      dockerfile: 'Backend/Dockerfile'
       containerRegistry: 'dockerhub-connection'
       tags: |
         latest

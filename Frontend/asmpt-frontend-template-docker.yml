@@ -11,7 +11,7 @@ steps:
     inputs:
       command: 'buildAndPush'
       repository: 'frotalucas/asmpt-frontend-image'
-      Dockerfile: 'Frontend/Dockerfile'
+      dockerfile: 'Frontend/Dockerfile'
       containerRegistry: 'dockerhub-connection'
       tags: |
         latest
