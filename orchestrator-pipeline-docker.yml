@@ -14,7 +14,7 @@ stages:
     - stage: Stage_1
       displayName: Docker Backend
       jobs:
-          - job: UploadDockerBackend
+          - job: PublishBackendDockerImage
             steps:
                 - checkout: self
                 - template: docker-template.yml
@@ -28,7 +28,7 @@ stages:
       dependsOn: Stage_1
       condition: succeeded()
       jobs:
-          - job: UploadDockerFrontend
+          - job: PublishFrontendDockerImage
             steps:
                 - checkout: self
                 - template: docker-template.yml
