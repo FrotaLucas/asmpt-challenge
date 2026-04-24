@@ -18,7 +18,7 @@ WORKDIR "/app/src"
 RUN dotnet publish "Project.csproj" -c Release --no-restore -o /app/publish
 
 # small image to execute publish stage
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
+FROM mcr.microsoft.com/dotnet/aspnet:9.0
 WORKDIR /app
 COPY --from=build /app/publish .
 ENTRYPOINT ["dotnet", "Project.dll"]
