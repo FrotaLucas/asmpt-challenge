@@ -135,8 +135,8 @@ public class ComponentServiceTests
         var result = await service.UpdateComponentAsync(updateDto);
 
         Assert.True(result.Success);
-        
-        Assert.Equal("Newx", result.Data.Code);
+
+        Assert.Equal("New", result.Data.Code);
         Assert.Equal("New Name", result.Data.Name);
     }
 }
