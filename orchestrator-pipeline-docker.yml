@@ -3,6 +3,10 @@
 
 # trigger: none
 
+trigger:
+  branches:
+    include:
+      - main
 
 pool:
     vmImage: 'ubuntu-latest'
