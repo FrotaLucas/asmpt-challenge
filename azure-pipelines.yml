@@ -1,0 +1,18 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+#eu nao deveria tbm usar um pool e uma maquina ?
+# pool:
+#   vmImage: ubuntu-latest
+
+steps:
+  - task: AzureStaticWebApp@0
+    inputs:
+      app_location: '/Frontend'
+      output_location: 'dist/smt-order-management'
+      azure_static_web_apps_api_token: '$(azure-swp-token)'
