@@ -15,4 +15,4 @@ steps:
     inputs:
       app_location: '/Frontend'
       output_location: 'dist/smt-order-management'
-      azure_static_web_apps_api_token: '$(azure-swp-token)'
+      azure_static_web_apps_api_token: $(azure-swp-token)
