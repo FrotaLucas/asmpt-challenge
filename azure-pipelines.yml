@@ -2,7 +2,10 @@
 trigger:
 - main
 
-# eu nao deveria tbm usar um pool e uma maquina ?
+variables:
+  group: 'swp-variable-group'
+
+
 pool:
   vmImage: ubuntu-latest
 
