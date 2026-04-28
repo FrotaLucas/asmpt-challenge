@@ -15,13 +15,13 @@ steps:
 
   - script: |
       echo "1 group of variables"
-      echo "show content of VALUE1 $(value1)" 
+      echo "show content of value1 $(value1)" 
     displayName: Script with Library Test
 
   - script: |
       echo "2 group of variable"
       echo "test swp token $(azure-swp-token)"
-    displayName: Script Test
+    displayName: Script Token Test
 
   - task: AzureStaticWebApp@0
     displayName: SWP task
