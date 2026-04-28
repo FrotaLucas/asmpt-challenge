@@ -14,7 +14,7 @@ steps:
 
   - script: |
       echo "Hellow"
-      echo "test swp token $(azure-swp-token)"
+      echo "test swp token"
 
   - task: AzureStaticWebApp@0
     displayName: swp task
