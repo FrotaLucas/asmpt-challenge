@@ -11,6 +11,11 @@ pool:
 
 steps:
   - checkout: self
+
+  - script: |
+      echo: "Hellow"
+      echo: "test swp token $(azure-swp-token)"
+
   - task: AzureStaticWebApp@0
     displayName: swp task
     inputs:
