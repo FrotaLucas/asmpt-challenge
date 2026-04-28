@@ -3,7 +3,8 @@ trigger:
 - main
 
 variables:
-  group: 'swp-variable-group'
+  - group: 'new-variable-group'
+  - group: 'swp-variable-group'
 
 
 pool:
@@ -13,8 +14,13 @@ steps:
   - checkout: self
 
   - script: |
-      echo "Hellow"
-      echo "test group variable $(swp-variable-group)"
+      echo "group 1"
+      echo "show 1 group of variable $(new-variable-group)"
+      echot "show variable $(name1) $(value1)" 
+
+  - script: |
+      echo "group 2"
+      echo "test 2 group of variable $(swp-variable-group)"
       echo "test swp token $(azure-swp-token)"
     displayName: Script Test
 
