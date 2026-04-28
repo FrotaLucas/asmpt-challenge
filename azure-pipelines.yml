@@ -12,6 +12,7 @@ pool:
 steps:
   - checkout: self
   - task: AzureStaticWebApp@0
+    displayName: swp task
     inputs:
       app_location: '/Frontend'
       output_location: 'dist/smt-order-management'
