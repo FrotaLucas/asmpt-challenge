@@ -15,7 +15,7 @@ steps:
 
   - script: |
       echo "1 group of variables"
-      echo "show variables NAME $(name1) VALUE $(value1)" 
+      echo "show content of VALUE1 $(value1)" 
     displayName: Script with Library Test
 
   - script: |
