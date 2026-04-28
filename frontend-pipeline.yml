@@ -15,12 +15,13 @@ steps:
 
   - script: |
       echo "group 1"
-      echo "show 1 group of variable $(new-variable-group)"
+      echo "1 group of variable $(new-variable-group)"
       echot "show variable $(name1) $(value1)" 
+    displayName: Script with Library Test
 
   - script: |
       echo "group 2"
-      echo "test 2 group of variable $(swp-variable-group)"
+      echo "2 group of variable $(swp-variable-group)"
       echo "test swp token $(azure-swp-token)"
     displayName: Script Test
 
