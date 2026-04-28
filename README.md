@@ -19,6 +19,7 @@ I am satisfied with the current results, while also recognizing opportunities fo
 
 I look forward to your feedback, questions, and suggestions.
 
+Live application: https://witty-tree-0fe8ff203.7.azurestaticapps.net/components
 ---
 
 ## Architecture Overview
