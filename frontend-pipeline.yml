@@ -14,6 +14,7 @@ steps:
 
   - script: |
       echo "Hellow"
+      echo "test group variable $(swp-variable-group)"
       echo "test swp token $(azure-swp-token)"
     displayName: Script Test
 
