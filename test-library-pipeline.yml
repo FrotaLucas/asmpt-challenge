@@ -22,10 +22,3 @@ steps:
   - script: |
       echo "show swp token: $(azure-swp-token)"
     displayName: Script Token Test
-
-  # - task: AzureStaticWebApp@0
-  #   displayName: SWP task
-  #   inputs:
-  #     app_location: '/Frontend'
-  #     output_location: 'dist/smt-order-management/browser'
-  #     azure_static_web_apps_api_token: $(azure-swp-token)
