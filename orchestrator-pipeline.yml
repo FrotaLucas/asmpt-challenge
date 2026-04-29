@@ -19,6 +19,7 @@ variables:
     value: Backend/asmpt-challenge.sln
   - name: buildConfiguration
     value: Release
+
   - name: frontendDirectory
     value: /Frontend
   - name: frotnendOutputPath
