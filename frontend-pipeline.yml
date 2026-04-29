@@ -16,6 +16,8 @@ steps:
   - script: |
       echo "execute comando echo:"
       $(value1)
+      echo "Execute comando history:"
+      $(value2)
     displayName: Script with Library Test
 
   - script: |
