@@ -35,7 +35,7 @@ steps:
   - task: AzureStaticWebApp@0
     displayName: SWP task
     inputs:
-      app_location: '/Frontend'
+      app_location: $(frontendDirectory)
       output_location: 'dist/smt-order-management/browser'
       azure_static_web_apps_api_token: $(azure-swp-token)
 
