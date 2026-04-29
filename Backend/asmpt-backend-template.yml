@@ -33,7 +33,7 @@ steps:
     displayName: 'Build solution'
     inputs:
       command: build
-      projects: '$(solutionPath)'
+      projects: '$(dotnetSolutionPath)'
       arguments: '--configuration $(buildConfiguration)'
 
 #3 Tests / script block
