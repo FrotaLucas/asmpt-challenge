@@ -8,10 +8,24 @@ trigger: none
 pool:
   vmImage: 'ubuntu-latest'
 
+
+
 variables:
-  solutionPath: Backend/asmpt-challenge.sln
-  buildConfiguration: Release
-  frontendDirectory: Frontend
+  #library variables
+  - group: 'swp-variable-group'
+
+  # global variables
+  - name: solutionPath
+    value: Backend/asmpt-challenge.sln
+  - name: buildConfiguration
+    value: Release
+  - name: frontendDirectory
+    value: Frontend
+
+  # solutionPath: Backend/asmpt-challenge.sln
+  # buildConfiguration: Release
+  # frontendDirectory: Frontend
+
 
 
 stages:
