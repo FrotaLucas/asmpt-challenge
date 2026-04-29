@@ -26,7 +26,7 @@ steps:
     displayName: 'task restore NET dependencies'
     inputs:
       command: restore
-      projects: '$(solutionPath)'
+      projects: '$(dotnetSolutionPath)'
 
 #2. Compila a aplicação
   - task: DotNetCoreCLI@2
