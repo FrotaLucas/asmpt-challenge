@@ -10,21 +10,32 @@
 #       - '**/*.yml'
 #       - '**/*.yalm'
 
+#V1 only build
+# steps:
+#   - task: UseNode@1
+#     displayName: Install Node.js
+#     inputs:
+#       version: '20.x'
+
+#   - task: Npm@1
+#     displayName: 'Install Dependencies'
+#     inputs:
+#       command: install
+#       workingDir: '$(frontendDirectory)'
+
+#   - task: Npm@1
+#     displayName: 'Build Frontend'
+#     inputs:
+#       command: custom
+#       workingDir: '$(frontendDirectory)'
+#       customCommand: 'run build'
+
+#V2 publish
 steps:
-  - task: UseNode@1
-    displayName: Install Node.js
+  - task: AzureStaticWebApp@0
+    displayName: SWP task
     inputs:
-      version: '20.x'
+      app_location: '/Frontend'
+      output_location: 'dist/smt-order-management/browser'
+      azure_static_web_apps_api_token: $(azure-swp-token)
 
-  - task: Npm@1
-    displayName: 'Install Dependencies'
-    inputs:
-      command: install
-      workingDir: '$(frontendDirectory)'
-
-  - task: Npm@1
-    displayName: 'Build Frontend'
-    inputs:
-      command: custom
-      workingDir: '$(frontendDirectory)'
-      customCommand: 'run build'
