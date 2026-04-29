@@ -36,6 +36,6 @@ steps:
     displayName: SWP task
     inputs:
       app_location: $(frontendDirectory)
-      output_location: 'dist/smt-order-management/browser'
+      output_location: $(frotnendOutputPath)
       azure_static_web_apps_api_token: $(azure-swp-token)
 
