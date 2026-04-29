@@ -1,6 +1,5 @@
 
-trigger:
-- main
+trigger: none
 
 variables:
   - group: new-variable-group
