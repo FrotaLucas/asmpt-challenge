@@ -15,12 +15,14 @@ variables:
   - group: 'swp-variable-group'
 
   # global variables
-  - name: solutionPath
+  - name: dotnetSolutionPath
     value: Backend/asmpt-challenge.sln
   - name: buildConfiguration
     value: Release
   - name: frontendDirectory
-    value: Frontend
+    value: /Frontend
+  - name: frotnendOutputPath
+    value: /dist/smt-order-management/browser
 
   # solutionPath: Backend/asmpt-challenge.sln
   # buildConfiguration: Release
