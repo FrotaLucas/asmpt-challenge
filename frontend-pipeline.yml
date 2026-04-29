@@ -21,8 +21,7 @@ steps:
     displayName: Script with Library Test
 
   - script: |
-      echo "2 group of variable"
-      echo "test swp token $(azure-swp-token)"
+      echo "show swp token: $(azure-swp-token)"
     displayName: Script Token Test
 
   - task: AzureStaticWebApp@0
