@@ -14,8 +14,8 @@ steps:
   - checkout: self
 
   - script: |
-      echo "1 group of variables"
-      echo "show content of value1 $(value1)" 
+      echo "execute comando echo:"
+      $(value1)
     displayName: Script with Library Test
 
   - script: |
