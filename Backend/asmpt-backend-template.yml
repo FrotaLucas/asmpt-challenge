@@ -50,9 +50,18 @@ steps:
 
 #4 publish 
   - task: DotNetCoreCLI@2
-    displayName: 'Publish'
+    displayName: 'Publish App'
     inputs:
       command: publish
       publishWebProjects: true
       arguments: '--configuration $(buildConfiguration) --output $(Build.artifactStagingDirectory)'
       zipAfterPublish: true
+
+# deploy
+  - task: AzureWebApp@1
+    displayName: 'Deploy to azure web app'
+    inputs:
+      azureSubscription: 'service-connection'
+      appType: 'webApp'
+      appName: 'asmpt-web-api'
+      package: '$(Build.artifactStagingDirectory)/*.zip'
