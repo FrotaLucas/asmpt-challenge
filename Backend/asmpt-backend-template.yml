@@ -47,3 +47,12 @@ steps:
       command: test
       projects: 'Backend/tests'
       arguments: '--configuration $(buildConfiguration) --no-build'
+
+#4 publish 
+  - task: DotNetCoreCLI@2
+    displayName: 'Publish'
+    inputs:
+      command: publish
+      publishWebProjects: true
+      arguments: '--configuration $(publishConfiguration) --output $(Build.artifactStagingDirectory)'
+      zipAfterPublish: true
