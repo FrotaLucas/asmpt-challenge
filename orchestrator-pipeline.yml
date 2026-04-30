@@ -21,9 +21,9 @@ variables:
     value: Release
 
   - name: frontendDirectory
-    value: /Frontend
-  - name: frotnendOutputPath
-    value: /dist/smt-order-management/browser
+    value: Frontend
+  - name: frontendOutputPath
+    value: dist/smt-order-management/browser
 
   # solutionPath: Backend/asmpt-challenge.sln
   # buildConfiguration: Release

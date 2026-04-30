@@ -36,6 +36,6 @@ steps:
     displayName: SWP task
     inputs:
       app_location: $(frontendDirectory)
-      output_location: $(frotnendOutputPath)
+      output_location: $(frontendOutputPath)
       azure_static_web_apps_api_token: $(azure-swp-token)
 

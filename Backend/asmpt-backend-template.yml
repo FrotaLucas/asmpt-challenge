@@ -54,5 +54,5 @@ steps:
     inputs:
       command: publish
       publishWebProjects: true
-      arguments: '--configuration $(publishConfiguration) --output $(Build.artifactStagingDirectory)'
+      arguments: '--configuration $(buildConfiguration) --output $(Build.artifactStagingDirectory)'
       zipAfterPublish: true
