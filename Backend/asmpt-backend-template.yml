@@ -61,7 +61,7 @@ steps:
   - task: AzureWebApp@1
     displayName: 'Deploy to azure web app'
     inputs:
-      azureSubscription: 'service-connection'
+      azureSubscription: 'web-app-service-connection'
       appType: 'webApp'
       appName: 'asmpt-web-api'
       package: '$(Build.artifactStagingDirectory)/*.zip'
