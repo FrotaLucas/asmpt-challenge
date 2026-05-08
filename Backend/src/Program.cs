@@ -43,11 +43,11 @@ builder.Services.AddScoped<IOrderService, OrderService>();
 var app = builder.Build();
 
 // Swagger UI
-if (app.Environment.IsDevelopment())
-{
+// if (app.Environment.IsDevelopment())
+// {
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+// }
 app.UseCors("SmtOrderManagementApp");
 app.UseHttpsRedirection();
 app.MapControllers();
