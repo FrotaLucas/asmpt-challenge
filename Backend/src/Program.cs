@@ -24,7 +24,9 @@ builder.Services.AddCors(options =>
     options.AddPolicy("SmtOrderManagementApp", policy =>
     {
         policy
-            .WithOrigins("http://localhost:4200")
+            .WithOrigins(
+                "http://localhost:4200",
+                "https://ambitious-river-08f962c03.7.azurestaticapps.net")
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
