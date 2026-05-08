@@ -26,7 +26,7 @@ variables:
     value: dist/smt-order-management/browser
   
   - name: appServiceConnectionName
-    value: 'web-app-service-connection'
+    value: web-app-service-connection
 
   # solutionPath: Backend/asmpt-challenge.sln
   # buildConfiguration: Release
@@ -43,6 +43,9 @@ stages:
         steps:
           - checkout: self
           - template: Backend/asmpt-backend-template.yml
+            parameters:
+              appServiceConnectionName: $(appServiceConnectionName)
+              
 
 
   - stage: Stage_2
