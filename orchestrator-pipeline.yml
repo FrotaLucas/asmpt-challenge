@@ -24,6 +24,9 @@ variables:
     value: Frontend
   - name: frontendOutputPath
     value: dist/smt-order-management/browser
+  
+  - name: appServiceConnectionName
+    value: 'web-app-service-connection'
 
   # solutionPath: Backend/asmpt-challenge.sln
   # buildConfiguration: Release
