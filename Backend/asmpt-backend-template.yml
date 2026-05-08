@@ -9,6 +9,9 @@
 #     exclude:
 #       - '**/*.yml'
 #       - '**/*.yaml'
+parameters:
+  - name: appServiceConnectionName
+    type: string
 
 steps:
 
@@ -61,7 +64,7 @@ steps:
   - task: AzureWebApp@1
     displayName: 'Deploy to azure web app'
     inputs:
-      azureSubscription: appServiceConnectionName
+      azureSubscription: ${{ parameters.appServiceConnectionName }}
       appType: 'webApp'
       appName: 'asmpt-web-api'
       package: '$(Build.artifactStagingDirectory)/*.zip'
