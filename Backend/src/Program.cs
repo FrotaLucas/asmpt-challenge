@@ -42,6 +42,24 @@ builder.Services.AddScoped<IOrderService, OrderService>();
 
 var app = builder.Build();
 
+//execute database migration
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    try{
+        var context = services.GetRequiredService<DataContext>();
+        context.Database.Migrate();
+    }
+
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred while seeding the database.");
+    }
+}
+
+
 // Swagger UI
 // if (app.Environment.IsDevelopment())
 // {
